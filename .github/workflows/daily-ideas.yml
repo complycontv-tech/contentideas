@@ -1,0 +1,30 @@
+name: Denné generovanie nápadov 🇸🇰
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # každý deň o 6:00 UTC
+  workflow_dispatch:       # manuálne spustenie
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate daily ideas
+        run: node .github/scripts/generate-ideas.js
+
+      - name: Update ideas-list.json
+        run: node .github/scripts/build-json.js
+
+      - name: Commit and push
+        run: |
+          git config user.name "Launchpad Bot"
+          git config user.email "bot@launchpadmarketing.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "📱 Daily ideas $(date +%Y-%m-%d)"
+          git push

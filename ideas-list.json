@@ -1,0 +1,82 @@
+[
+  {
+    "title": "Prečo tvoje slovenské reklamy stoja veľa a nepredávajú?",
+    "niche": "Marketing",
+    "hook": "Sypeš peniaze do Meta Ads a výsledok nula? Tu je dôvod, prečo slovenské publikum tvoju reklamu preskakuje.",
+    "format": "Reel",
+    "platform": "IG/TikTok",
+    "date": "2026-06-04",
+    "path": "ideas/Marketing/2026-06-04-preco-reklamy-nestacia.md",
+    "tags": ["marketing", "ads", "slovensko"]
+  },
+  {
+    "title": "AI v slovenskom copywritingu: Hrozba alebo pomocník?",
+    "niche": "Marketing",
+    "hook": "Nahradí nás AI v písaní textov? Skúsili sme nechať AI napísať kampaň v slovenčine a výsledok ťa prekvapí.",
+    "format": "Carousel",
+    "platform": "IG",
+    "date": "2026-06-04",
+    "path": "ideas/Marketing/2026-06-04-ai-v-copywritingu.md",
+    "tags": ["marketing", "AI", "copywriting"]
+  },
+  {
+    "title": "Ako vyzerá náš 14-dňový šprint",
+    "niche": "Marketing",
+    "hook": "Z nápadu na kampaň k prvým konverziám za 2 týždne. Pozri sa, ako funguje náš motor v Launchpad Marketingu.",
+    "format": "Reel",
+    "platform": "IG/TikTok",
+    "date": "2026-06-04",
+    "path": "ideas/Marketing/2026-06-04-14-dnovy-sprint.md",
+    "tags": ["marketing", "process"]
+  },
+  {
+    "title": "Najväčšia chyba slovenských gastro profilov",
+    "niche": "Gastro",
+    "hook": "Tvoje jedlo vyzerá super, ale tvoj profil odrádza ľudí od návštevy. Oprav túto jednu vec v BIO.",
+    "format": "Stories",
+    "platform": "IG",
+    "date": "2026-06-04",
+    "path": "ideas/Gastro/2026-06-04-najvacsia-chyba-gastro-profilov.md",
+    "tags": ["gastro", "instagram"]
+  },
+  {
+    "title": "Koľko reálne stojí espresso v Bratislave?",
+    "niche": "Gastro",
+    "hook": "Myslíš si, že 3 eurá za kávu je veľa? Poď sa pozrieť, čo všetko platíš v jednej šálke.",
+    "format": "Reel",
+    "platform": "IG",
+    "date": "2026-06-04",
+    "path": "ideas/Gastro/2026-06-04-espresso-marza-bratislava.md",
+    "tags": ["gastro", "kava", "bratislava"]
+  },
+  {
+    "title": "Top 3 work-from-cafe v Košiciach",
+    "niche": "Gastro",
+    "hook": "Hľadáš kľud na prácu a dobrú kávu v KE? Tu sú tri miesta, kde ťa nikto nevyhodí ani po 3 hodinách s notebookom.",
+    "format": "TikTok",
+    "platform": "TikTok",
+    "date": "2026-06-04",
+    "path": "ideas/Gastro/2026-06-04-work-from-cafe-kosice.md",
+    "tags": ["gastro", "kosice"]
+  },
+  {
+    "title": "Chceš stavať brand, ale bojíš sa kamery?",
+    "niche": "Personal Brand",
+    "hook": "Najväčšia brzda tvojho biznisu je tvoj strach z Reels. Mám pre teba 3 tipy, ako začať aj bez profi techniky.",
+    "format": "Reel",
+    "platform": "IG/TikTok",
+    "date": "2026-06-04",
+    "path": "ideas/Personal Brand/2026-06-04-bojis-sa-kamery.md",
+    "tags": ["personal-brand", "kamera"]
+  },
+  {
+    "title": "LinkedIn na Slovensku: Koniec korporátnej nudy",
+    "niche": "Personal Brand",
+    "hook": "Zabudni na škrobené statusy. Rok 2024 na slovenskom LinkedIne patrí autenticite. Tu je návod, ako na to.",
+    "format": "Carousel",
+    "platform": "IG",
+    "date": "2026-06-04",
+    "path": "ideas/Personal Brand/2026-06-04-linkedin-koniec-nudy.md",
+    "tags": ["personal-brand", "linkedin"]
+  }
+]
