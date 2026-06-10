@@ -9,12 +9,48 @@
     "date": "2026-06-10"
   },
   {
+    "niche": "Marketing",
+    "title": "Umelá inteligencia v slovenskom copywritingu",
+    "description": "Slovenskí marketéri hromadne integrujú lokálne ladené AI modely na generovanie pútavých textov pre sociálne siete, ktoré rešpektujú slovenskú gramatiku a slang. Dôraz sa kladie na rýchlu editáciu a prispôsobenie tónu hlasu značky.",
+    "platform": "LinkedIn, Instagram",
+    "insight": "Využite AI na generovanie nápadov a prvotných konceptov, ale vždy pridajte lokálne reálie a špecifické slovenské výrazy na poľudštenie obsahu.",
+    "source": "Kamil Aujeský",
+    "date": "2026-06-10"
+  },
+  {
+    "niche": "Marketing",
+    "title": "De-influencing a hľadanie autentického hlasu",
+    "description": "Tvorcovia a značky otvorene hovoria o tom, ktoré marketingové praktiky alebo produkty sú preceňované a nefungujú. Tento typ úprimného obsahu získava obrovskú dôveru divákov, ktorí sú unavení z neustáleho tlaku na nákup.",
+    "platform": "TikTok, Instagram Reels",
+    "insight": "Zdieľajte so svojím publikom úprimný zoznam vecí, ktoré vo vašej nite nefungujú, alebo mýtov, ktoré sú preceňované. Buduje to silný pocit dôvery.",
+    "source": "Slovenská marketingová komunita",
+    "date": "2026-06-10"
+  },
+  {
     "niche": "Gastro",
-    "title": "Úprimný De-influencing a biznis storytelling",
+    "title": "Úprimný De-influencing v slovenskom gastre",
     "description": "Slovenskí foodies a bežní zákazníci sú presýtení zaplatenými recenziami. Na vzostupe je brutálne úprimný de-influencing – objektívne hodnotenie porcií, servisu a pomeru ceny a výkonu, ruka v ruke so zdieľaním zákulisia biznisu majiteľmi.",
     "platform": "Instagram Reels, TikTok",
     "insight": "Ak propagujete gastro podnik, vyhnite sa prehnanému \"hype\". Stavte na transparentnosť. Natočte Reel s majiteľom, kde úprimne rozoberá tému: \"Prečo musíme zvýšiť cenu obeda o 50 centov?\" alebo ukážte reálne prípravy.",
     "source": "@stryco.filip, @coje_bratislava",
+    "date": "2026-06-10"
+  },
+  {
+    "niche": "Gastro",
+    "title": "Instagrammable & Aesthetic dizajny prevádzok",
+    "description": "Zákazníci si vyberajú podniky nielen podľa chuti jedla, ale aj podľa vizuálnej príťažlivosti interiéru a prezentácie tanierov. Každý kútik reštaurácie alebo kaviarne, ktorý je \"Instagrammable\", slúži ako bezplatný marketingový kanál vďaka fotkám od návštevníkov.",
+    "platform": "Instagram, TikTok",
+    "insight": "Navrhnite v prevádzke jeden vizuálne zaujímavý kútik (napr. neónový nápis, špecifická stena) a podávajte kávu alebo jedlo esteticky tak, aby si ho zákazníci chceli okamžite odfotiť na Stories.",
+    "source": "Nové bratislavské a košické kaviarne",
+    "date": "2026-06-10"
+  },
+  {
+    "niche": "Gastro",
+    "title": "Behind-the-Kitchen video formáty",
+    "description": "Gastro prevádzky ukazujú raw procesy z kuchyne a prípravu surovín. Videá sú sprevádzané ASMR zvukmi krájania, smaženia a varenia, prípadne rozhovormi so šéfkuchárom priamo počas špičky.",
+    "platform": "TikTok, Instagram Reels",
+    "insight": "Vytvorte rýchle ASMR video z prípravy vášho najpredávanejšieho jedla. Ukážte čerstvosť surovín a zručnosť vašich kuchárov.",
+    "source": "@coje_bratislava",
     "date": "2026-06-10"
   },
   {
@@ -24,6 +60,24 @@
     "platform": "LinkedIn, Instagram",
     "insight": "Vytvorte príspevok alebo krátke video o najväčšej chybe, ktorú ste urobili za posledný rok v biznise alebo práci, a čo ste sa z nej naučili. Ukážte autenticitu a zraniteľnosť – na slovenskom trhu to buduje omnoho silnejšiu lojalitu.",
     "source": "LinkedIn, @michal.truban",
+    "date": "2026-06-10"
+  },
+  {
+    "niche": "Personal Brand",
+    "title": "Micro-learning karusely a infografiky",
+    "description": "Zdieľanie vysoko edukačného, ale ľahko stráviteľného obsahu vo forme rotujúcich obrázkových príspevkov (carousels). Slovenskí odborníci takto ukazujú svoje know-how prostredníctvom \"krok za krokom\" návodov.",
+    "platform": "Instagram, LinkedIn",
+    "insight": "Vytvorte 5-stranový karusel, kde vysvetlíte jeden zložitý problém z vašej niky jednoduchou schémou alebo ikonami. Prvá strana musí obsahovať silný háčik (hook).",
+    "source": "Slovenskí B2B tvorcovia",
+    "date": "2026-06-10"
+  },
+  {
+    "niche": "Personal Brand",
+    "title": "Budovanie komunity cez interaktívne Stories",
+    "description": "Osobné značky využívajú každodenné, neformálne príbehy (Stories) s anketami, kvízmi a Q&A nálepkami. To im umožňuje okamžite reagovať na otázky komunity a zapájať ich do tvorby produktov alebo služieb.",
+    "platform": "Instagram",
+    "insight": "Aspoň dvakrát do týždňa použite v Stories nálepku s otázkami (\"Opýtaj sa ma čokoľvek o X\") a odpovedzte úprimne formou krátkeho videa alebo textu s reálnymi príkladmi.",
+    "source": "Tony Dúbravec",
     "date": "2026-06-10"
   }
 ]
