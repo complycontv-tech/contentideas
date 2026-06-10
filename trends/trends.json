@@ -1,65 +1,29 @@
 [
   {
-    "title": "UGC (User Generated Content) boom na Slovensku",
     "niche": "Marketing",
-    "description": "Slovenské značky čoraz viac využívajú reálne videá od zákazníkov namiesto profesionálnych produkcií. UGC má 4x vyššiu mieru zapojenia.",
-    "insight": "Vytvor šablónu pre svojich zákazníkov — nech ti pošlú 30s video ako používajú tvoj produkt. Najlacnejší a najautentickejší content.",
-    "platform": "Instagram, TikTok",
-    "source": "Meta Business Suite SK, pozorovanie top značiek",
+    "title": "UGC a slovenské Voiceover Reels",
+    "description": "Formát rýchlych, dynamicky strihaných videí s výraznými titulkami (CapCut štýl) a slovenským voiceoverom. Namiesto nablýskaných korporátnych reklám značky využívajú reálnych zamestnancov alebo mikro-tvorcov na tvorbu uvoľneného, humorného obsahu zo zákulisia.",
+    "platform": "Instagram Reels, TikTok",
+    "insight": "Prestaňte s dokonalým korporátnym videom. Zapojte interných ľudí alebo mikro-UGC tvorcov. Vytvorte 30-sekundové video o tom, ako u vás prebieha bežný deň, s rýchlymi strihmi, trefným slovenským voiceoverom a titulkami.",
+    "source": "@tonydubravec",
     "date": "2026-06-10"
   },
   {
-    "title": "AI content creation tooly sú na vzostupe",
-    "niche": "Marketing",
-    "description": "Slovenskí marketéri masívne adoptujú AI nástroje (ChatGPT, Claude, Canva AI, Midjourney) na tvorbu obsahu. Najmä na copywriting a vizuály.",
-    "insight": "Ukáž ako kombinuješ AI + človek. Reel o tvojom AI workflow. Slovenské publikum je zvedavé ale skeptické — vzdelávaj, nie predávaj.",
-    "platform": "LinkedIn, Instagram",
-    "source": "LinkedIn SK diskusie, Canva SK komunita",
-    "date": "2026-06-10"
-  },
-  {
-    "title": "Short-form video dominuje (Reels + TikTok)",
-    "niche": "Marketing",
-    "description": "Krátke videá do 60s majú najvyšší dosah na oboch platformách. TikTok preferuje 20-30s, IG Reels 30-60s. Textové titulky sú must-have.",
-    "insight": "Každý blog post prerob na 3 Reely. Jeden edukatívny, jeden zábavný, jeden behind-the-scenes. Titulky v slovenčine vždy.",
-    "platform": "Instagram, TikTok",
-    "source": "Meta algoritmus updates, TikTok trend report",
-    "date": "2026-06-10"
-  },
-  {
-    "title": "Brunch kultúra na vzostupe v slovenských mestách",
     "niche": "Gastro",
-    "description": "Brunch sa stal sociálnym fenoménom v BA, KE, TN. Mladí ľudia idú na brunch kvôli zážitku, fotkám a atmosfére — nie len jedlu.",
-    "insight": "Natoč brunch tour: vyskúšaj 3 miesta za víkend, porovnaj cena/kvalita/vibe. Presne tento content Slovaci milujú.",
-    "platform": "Instagram (Reels), TikTok",
-    "source": "Instagram SK foodie komunita, Google Trends",
+    "title": "Úprimný De-influencing a biznis storytelling",
+    "description": "Slovenskí foodies a bežní zákazníci sú presýtení zaplatenými recenziami. Na vzostupe je brutálne úprimný de-influencing – objektívne hodnotenie porcií, servisu a pomeru ceny a výkonu, ruka v ruke so zdieľaním zákulisia biznisu majiteľmi.",
+    "platform": "Instagram Reels, TikTok",
+    "insight": "Ak propagujete gastro podnik, vyhnite sa prehnanému \"hype\". Stavte na transparentnosť. Natočte Reel s majiteľom, kde úprimne rozoberá tému: \"Prečo musíme zvýšiť cenu obeda o 50 centov?\" alebo ukážte reálne prípravy.",
+    "source": "@stryco.filip, @coje_bratislava",
     "date": "2026-06-10"
   },
   {
-    "title": "Food porn a estetické podávanie jedál",
-    "niche": "Gastro",
-    "description": "Slovenské reštaurácie súťažia v estetike jedál. 'Instagramovateľné' jedlá majú o 40% viac zmienok na sociálnych sieťach.",
-    "insight": "Nauč reštaurácie fotiť jedlo: 45° uhol, denné svetlo, top-down na ploché jedlá.",
-    "platform": "Instagram",
-    "source": "Analýza top gastro účtov SK",
-    "date": "2026-06-10"
-  },
-  {
-    "title": "Founder-led content na LinkedIne",
     "niche": "Personal Brand",
-    "description": "Slovenskí zakladatelia čoraz viac budujú osobnú značku. Autentické príbehy fungujú lepšie ako korporátne reklamy.",
-    "insight": "Zdieľaj reálne čísla a lekcie. 'V tomto mesiaci sme spravili X a naučili sa Y.' Úprimnosť > dokonalosť.",
-    "platform": "LinkedIn",
-    "source": "LinkedIn SK top creators 2026",
-    "date": "2026-06-10"
-  },
-  {
-    "title": "Video je must-have pre osobný brand",
-    "niche": "Personal Brand",
-    "description": "Textové posty už nestačia. LinkedIn aj Instagram uprednostňujú video obsah. Aj 30s video má 3x vyšší reach ako fotka.",
-    "insight": "Začni s jedným Reelom týždenne: 30-60s, hovor o tom čomu rozumieš. Žiadna kamera? Stačí screen recording + voiceover.",
+    "title": "Founder-Led Brand a zdieľanie failov",
+    "description": "Trend budovania osobnej značky na slovenskom trhu sa presúva z dokonalých úspechov na transparentné zdieľanie chýb, pádov a prekážok. Osobná značka zakladateľa (Founder-led) sa stáva hlavným marketingovým kanálom firiem.",
     "platform": "LinkedIn, Instagram",
-    "source": "LinkedIn algoritmus, IG creator accounts",
+    "insight": "Vytvorte príspevok alebo krátke video o najväčšej chybe, ktorú ste urobili za posledný rok v biznise alebo práci, a čo ste sa z nej naučili. Ukážte autenticitu a zraniteľnosť – na slovenskom trhu to buduje omnoho silnejšiu lojalitu.",
+    "source": "LinkedIn, @michal.truban",
     "date": "2026-06-10"
   }
 ]
