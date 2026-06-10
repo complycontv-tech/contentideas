@@ -6,113 +6,270 @@
 <title>Bc. Kevin Beke — Content Ideas Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;min-height:100vh}
+body{
+  font-family:'Nunito','Inter',sans-serif;
+  background:linear-gradient(135deg,#FF6B35 0%,#1a1a2e 40%,#16213e 70%,#0f3460 100%);
+  color:#fff;
+  min-height:100vh;
+  line-height:1.6;
+}
 .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
+/* Floating Menu */
+.floating-menu{
+  position:fixed;top:20px;right:20px;z-index:1000;
+  transition:opacity .5s;
+}
+.floating-menu.hidden{opacity:0;pointer-events:none}
+.menu-btn{
+  width:52px;height:52px;border-radius:50%;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.2);
+  color:#fff;font-size:22px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:.3s;box-shadow:0 8px 32px rgba(0,0,0,.3);
+}
+.menu-btn:hover{background:rgba(255,255,255,.2);transform:scale(1.08)}
+.menu-dropdown{
+  position:absolute;top:62px;right:0;
+  background:rgba(26,26,46,.95);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:16px;padding:8px;
+  min-width:190px;box-shadow:0 8px 32px rgba(0,0,0,.4);
+  display:none;
+}
+.menu-dropdown.open{display:block}
+.menu-item{
+  display:block;width:100%;text-align:left;
+  padding:10px 16px;border-radius:10px;margin-bottom:2px;
+  border:none;background:transparent;
+  color:rgba(255,255,255,.5);font-size:14px;font-weight:600;
+  cursor:pointer;transition:.2s;font-family:'Nunito',sans-serif;
+}
+.menu-item:hover,.menu-item.active{background:rgba(255,255,255,.12);color:#fff}
+
 /* Hero */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;opacity:.12}
-.hero-bg div{position:absolute;border-radius:50%;filter:blur(120px);animation:float 6s ease-in-out infinite}
-.hero-bg .b1{top:25%;left:20%;width:500px;height:500px;background:#a855f7}
-.hero-bg .b2{bottom:20%;right:20%;width:500px;height:500px;background:#ec4899;animation-delay:-3s}
-.hero-bg .b3{top:40%;left:50%;width:300px;height:300px;background:#3b82f6;animation-delay:-1.5s}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-25px)}}
-.hero h1{font-size:clamp(2.5rem,7vw,5rem);font-weight:800;margin-bottom:16px;background:linear-gradient(135deg,#f093fb,#f5576c,#4facfe);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{color:rgba(255,255,255,.5);font-size:clamp(.9rem,2vw,1.2rem);max-width:600px;margin:0 auto}
-.hero .btns{margin-top:40px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.hero .btns a{padding:14px 28px;border-radius:999px;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;transition:.3s;display:inline-flex;align-items:center;gap:8px}
-.hero .btns .btn-trend{background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);color:#fff}
-.hero .btns .btn-primary{background:linear-gradient(135deg,#9333ea,#db2777);color:#fff;border:none}
-.hero .stats{margin-top:60px;display:flex;gap:clamp(1.5rem,5vw,4rem);justify-content:center}
-.hero .stats .num{font-size:clamp(1.5rem,3vw,2rem);font-weight:700;background:linear-gradient(135deg,#f093fb,#f5576c,#4facfe);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero .stats .lbl{color:rgba(255,255,255,.4);font-size:12px;margin-top:4px}
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;position:relative;overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;opacity:.08}
+.hero-bg div{
+  position:absolute;border-radius:50%;filter:blur(120px);
+  animation:float 6s ease-in-out infinite;
+}
+.hero-bg .b1{top:20%;left:15%;width:600px;height:600px;background:#FF6B35}
+.hero-bg .b2{bottom:15%;right:15%;width:500px;height:500px;background:#0f3460;animation-delay:-3s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-30px)}}
+.hero h1{
+  font-size:clamp(2.5rem,7vw,5rem);font-weight:900;
+  margin-bottom:12px;color:#fff;
+  font-family:'Nunito',sans-serif;
+  letter-spacing:-1px;
+}
+.hero .sub{
+  color:rgba(255,255,255,.6);font-size:clamp(.9rem,2vw,1.2rem);
+  max-width:600px;margin:0 auto;font-weight:400;
+}
+.hero .divider{
+  width:60px;height:3px;background:#FF6B35;
+  margin:24px auto;border-radius:2px;
+}
+.hero .btns{margin-top:36px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero .btns a{
+  padding:14px 32px;border-radius:50px;
+  font-size:15px;font-weight:700;text-decoration:none;
+  transition:.3s;font-family:'Nunito',sans-serif;
+}
+.hero .btns .btn-primary{
+  background:#FF6B35;color:#fff;border:none;
+}
+.hero .btns .btn-primary:hover{background:#e55a2b;transform:translateY(-2px)}
+.hero .btns .btn-outline{
+  background:rgba(255,255,255,.08);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.2);color:#fff;
+}
+.hero .btns .btn-outline:hover{background:rgba(255,255,255,.15);transform:translateY(-2px)}
+.hero .scroll-hint{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,.3);font-size:14px;
+  animation:bounce 2s infinite;font-weight:300;
+}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
 
 /* Sections */
 .section{padding:5rem 0}
-.section-label{color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.2em;font-size:11px;text-align:center;margin-bottom:12px}
-.section-title{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;text-align:center;margin-bottom:8px;background:linear-gradient(135deg,#f093fb,#f5576c,#4facfe);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.section-sub{color:rgba(255,255,255,.4);font-size:14px;text-align:center;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+.section-label{
+  color:#FF6B35;text-transform:uppercase;letter-spacing:.15em;
+  font-size:12px;font-weight:700;text-align:center;margin-bottom:8px;
+}
+.section-title{
+  font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;
+  text-align:center;margin-bottom:32px;color:#fff;
+  font-family:'Nunito',sans-serif;
+}
 
 /* Filters */
 .filters{display:flex;gap:8px;justify-content:center;margin-bottom:32px;flex-wrap:wrap}
-.filter-btn{padding:8px 16px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid rgba(255,255,255,.1);background:transparent;color:rgba(255,255,255,.5);cursor:pointer;transition:.2s}
-.filter-btn:hover{border-color:rgba(255,255,255,.3)}
-.filter-btn.active{background:rgba(255,255,255,.2);color:#fff;border-color:rgba(255,255,255,.3)}
+.filter-btn{
+  padding:8px 20px;border-radius:50px;
+  font-size:13px;font-weight:600;font-family:'Nunito',sans-serif;
+  border:1px solid rgba(255,255,255,.12);
+  background:transparent;color:rgba(255,255,255,.5);
+  cursor:pointer;transition:.2s;
+}
+.filter-btn:hover{border-color:rgba(255,255,255,.3);color:#fff}
+.filter-btn.active{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.25)}
 
-/* Cards grid */
+/* Grid */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
-.card{background:linear-gradient(135deg,rgba(240,147,251,.12),rgba(245,87,108,.08),rgba(79,172,254,.12));backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1.25rem;transition:.3s}
-.card:hover{transform:scale(1.02)}
-.card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
-.tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px}
-.tag-mkt{background:#DBEAFE;color:#1E40AF;border:1px solid #BFDBFE}
-.tag-gst{background:#FEF3C7;color:#92400E;border:1px solid #FDE68A}
-.tag-brd{background:#EDE9FE;color:#6D28D9;border:1px solid #DDD6FE}
-.tag-sm{font-size:11px;color:rgba(255,255,255,.4);background:rgba(255,255,255,.05);padding:3px 10px;border-radius:12px;display:inline-block}
-.trend-dot{width:10px;height:10px;border-radius:50%;background:#EF4444;box-shadow:0 0 12px rgba(239,68,68,.4)}
-.card h3{color:#fff;font-size:15px;font-weight:600;margin-bottom:8px}
-.card p{color:rgba(255,255,255,.5);font-size:13px;line-height:1.6;margin-bottom:12px}
-.insight-box{background:rgba(0,0,0,.2);border-radius:8px;padding:12px;margin-bottom:12px}
-.insight-box .ilbl{font-size:11px;font-weight:600;color:#c084fc;margin-bottom:4px}
+
+/* Cards */
+.card{
+  background:rgba(255,255,255,.06);backdrop-filter:blur(4px);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;padding:1.5rem;
+  transition:all .3s;cursor:pointer;
+  position:relative;overflow:hidden;
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,transparent,#FF6B35,transparent);
+  opacity:0;transition:.3s;
+}
+.card:hover::before{opacity:1}
+.card:hover{
+  transform:translateY(-4px);
+  background:rgba(255,255,255,.09);
+  border-color:rgba(255,255,255,.15);
+  box-shadow:0 8px 32px rgba(0,0,0,.2);
+}
+.card-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
+.tag{font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;font-family:'Nunito',sans-serif}
+.tag-mkt{background:rgba(255,107,53,.2);color:#FF6B35}
+.tag-gst{background:rgba(255,193,7,.15);color:#FFC107}
+.tag-brd{background:rgba(147,51,234,.2);color:#c084fc}
+.tag-sm{font-size:11px;color:rgba(255,255,255,.4);background:rgba(255,255,255,.06);padding:4px 10px;border-radius:8px}
+.trend-dot{width:10px;height:10px;border-radius:50%;background:#FF6B35;box-shadow:0 0 12px rgba(255,107,53,.4)}
+.card h3{color:#fff;font-size:16px;font-weight:700;margin-bottom:8px;font-family:'Nunito',sans-serif}
+.card p{color:rgba(255,255,255,.55);font-size:13px;line-height:1.6;margin-bottom:12px}
+.insight-box{background:rgba(255,107,53,.08);border-radius:10px;padding:14px;margin-bottom:12px;border-left:3px solid #FF6B35}
+.insight-box .ilbl{font-size:11px;font-weight:700;color:#FF6B35;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em}
 .insight-box .itxt{color:rgba(255,255,255,.6);font-size:12px;line-height:1.5}
 .card-meta{display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.3)}
-.card-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
-.detail-btn{color:#c084fc;cursor:pointer;font-size:12px;border:none;background:none;display:flex;align-items:center;gap:4px;transition:.2s}
-.detail-btn:hover{color:#a855f7}
-.details{display:none;margin-top:12px;flex-direction:column;gap:12px}
-.details.open{display:flex}
-.detail-label{font-size:11px;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:2px}
-.detail-txt{color:rgba(255,255,255,.6);font-size:12px}
-.dl-link{color:rgba(255,255,255,.4);text-decoration:none;font-size:12px;transition:.2s;display:inline-flex;align-items:center;gap:4px}
-.dl-link:hover{color:#fff}
+.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.06)}
 
-/* Contact */
-.contact{padding:4rem 0;text-align:center}
-.contact .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
-.contact .cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:999px;font-weight:600;font-size:14px;text-decoration:none;transition:.2s}
-.contact .cta-ig{background:linear-gradient(135deg,#9333ea,#db2777);color:#fff}
-.contact .cta-em{background:rgba(255,255,255,.1);backdrop-filter:blur(8px);color:#fff;border:1px solid rgba(255,255,255,.1)}
+/* Detail Modal */
+.modal-overlay{
+  position:fixed;inset:0;z-index:2000;
+  background:rgba(0,0,0,.7);backdrop-filter:blur(8px);
+  display:none;justify-content:center;align-items:center;
+  padding:20px;
+}
+.modal-overlay.open{display:flex}
+.modal{
+  background:linear-gradient(135deg,#1a1a2e,#16213e);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;padding:2rem;
+  max-width:700px;width:100%;max-height:85vh;overflow-y:auto;
+  position:relative;animation:modalIn .3s ease-out;
+}
+@keyframes modalIn{0%{opacity:0;transform:scale(.95) translateY(10px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+.modal-close{
+  position:absolute;top:16px;right:16px;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,.08);border:none;
+  color:#fff;font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:.2s;
+}
+.modal-close:hover{background:rgba(255,255,255,.15)}
+.modal h2{font-size:22px;font-weight:800;margin-bottom:16px;color:#fff;font-family:'Nunito',sans-serif}
+.modal .hook{color:rgba(255,255,255,.5);font-size:14px;margin-bottom:24px;line-height:1.6}
+.modal-section{margin-bottom:20px}
+.modal-label{font-size:11px;font-weight:700;color:#FF6B35;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.modal-text{color:rgba(255,255,255,.65);font-size:13px;line-height:1.6;white-space:pre-wrap}
+.modal-btn{
+  display:inline-block;padding:12px 28px;
+  background:#FF6B35;color:#fff;border:none;border-radius:50px;
+  font-size:14px;font-weight:700;font-family:'Nunito',sans-serif;
+  cursor:pointer;transition:.3s;margin-top:8px;text-decoration:none;
+}
+.modal-btn:hover{background:#e55a2b;transform:translateY(-1px)}
 
-footer{text-align:center;padding:20px;color:rgba(255,255,255,.1);font-size:12px}
-
-@keyframes appear{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
-.appear{opacity:0;transform:translateY(30px);transition:all .7s ease-out}
+/* Animations */
+.appear{opacity:0;transform:translateY(40px);transition:all .7s cubic-bezier(.16,1,.3,1)}
 .appear.show{opacity:1;transform:translateY(0)}
+
+/* No contact section - removed */
+
+/* Print styles for PDF */
+@media print{
+  body{background:#fff!important;color:#333!important}
+  .floating-menu,.hero .btns,.hero .scroll-hint,.filters,.filter-btn,.card-footer,.modal-overlay{display:none!important}
+  .card{break-inside:avoid;background:#fff!important;border:1px solid #ddd!important;color:#333!important}
+  .card h3{color:#1a1a2e!important}
+  .card p{color:#555!important}
+  .tag-mkt{background:#f5f5f5!important;color:#FF6B35!important}
+  .tag-gst{background:#f5f5f5!important;color:#FFC107!important}
+  .tag-brd{background:#f5f5f5!important;color:#c084fc!important}
+  .insight-box{border-left:3px solid #FF6B35!important;background:#fafafa!important}
+  .insight-box .ilbl{color:#FF6B35!important}
+  .insight-box .itxt{color:#555!important}
+  .section{padding:1rem 0!important}
+  .hero{min-height:auto!important;padding:3rem 0!important}
+  .hero h1{color:#1a1a2e!important}
+  .hero .sub{color:#555!important}
+  .grid{grid-template-columns:1fr 1fr!important;gap:12px!important}
+  body *{visibility:visible!important}
+}
+
+/* Scrollbar */
+.modal::-webkit-scrollbar{width:6px}
+.modal::-webkit-scrollbar-track{background:transparent}
+.modal::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:3px}
 </style>
 </head>
 <body>
 
+<!-- Floating Menu -->
+<div class="floating-menu hidden" id="floatingMenu">
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  <div class="menu-dropdown" id="menuDropdown">
+    <button class="menu-item active" onclick="scrollTo('hero')">🏠 Domov</button>
+    <button class="menu-item" onclick="scrollTo('trends')">🔥 Trendy</button>
+    <button class="menu-item" onclick="scrollTo('ideas')">📱 Nápady</button>
+  </div>
+</div>
+
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"><div class="b1"></div><div class="b2"></div><div class="b3"></div></div>
+<section class="hero" id="hero">
+  <div class="hero-bg"><div class="b1"></div><div class="b2"></div></div>
   <div>
-    <p style="color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.25em;font-size:12px;margin-bottom:20px">— Content Ideas Hub —</p>
+    <p style="color:#FF6B35;text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:700;margin-bottom:16px">— Content Ideas Hub —</p>
     <h1>Bc. Kevin Beke</h1>
-    <p>Marketingová stratégia • Content Creation • Osobný brand • Slovensko</p>
+    <div class="divider"></div>
+    <p class="sub">Marketingová stratégia • Content Creation • Osobný brand • Slovensko</p>
     <div class="btns">
-      <a href="#trends" class="btn-trend">🔥 Trendy</a>
-      <a href="#ideas" class="btn-trend">📱 Nápady</a>
-      <a href="#contact" class="btn-primary">✉️ Kontakt</a>
-    </div>
-    <div class="stats" id="stats">
-      <div><div class="num" id="ideaCount">0</div><div class="lbl">Nápadov</div></div>
-      <div><div class="num" id="trendCount">0</div><div class="lbl">Trendov</div></div>
-      <div><div class="num">3</div><div class="lbl">Niky</div></div>
-      <div><div class="num">SK</div><div class="lbl">Trh</div></div>
+      <a href="#trends" class="btn-primary">🔥 Preskúmať trendy</a>
+      <a href="#ideas" class="btn-outline">📱 Zobraziť nápady</a>
     </div>
   </div>
+  <div class="scroll-hint">Scroll pre viac ↓</div>
 </section>
 
 <!-- TRENDS -->
 <section class="section" id="trends">
   <div class="container appear">
     <div class="section-label">Trending</div>
-    <h2 class="section-title">🔥 Aktuálne trendy</h2>
-    <p class="section-sub">Sledované denne pre slovenský trh</p>
+    <h2 class="section-title">Aktuálne trendy</h2>
     <div class="filters" id="trendFilters"></div>
     <div class="grid" id="trendGrid"></div>
   </div>
@@ -122,29 +279,22 @@ footer{text-align:center;padding:20px;color:rgba(255,255,255,.1);font-size:12px}
 <section class="section" id="ideas">
   <div class="container appear">
     <div class="section-label">Content</div>
-    <h2 class="section-title">📱 Denné nápady na obsah</h2>
-    <p class="section-sub">Každý nápad obsahuje scénar, cieľovku a vizuálne tipy</p>
+    <h2 class="section-title">Denné nápady na obsah</h2>
     <div class="filters" id="ideaFilters"></div>
     <div class="grid" id="ideaGrid"></div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="container appear">
-    <h2 class="section-title">Poďme spolupracovať</h2>
-    <p class="section-sub">Sleduj ma na Instagrame pre každodenný obsah o marketingu, gastro a osobnom brande.</p>
-    <div class="cta-row">
-      <a href="https://www.instagram.com/orchisitalica/" target="_blank" class="cta cta-ig">📸 @orchisitalica</a>
-      <a href="mailto:kevin@launchpadmarketing.com" class="cta cta-em">✉️ kevin@launchpadmarketing.com</a>
-    </div>
+<!-- Detail Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modalContent">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalBody"></div>
   </div>
-  <footer>© 2026 Bc. Kevin Beke</footer>
-</section>
+</div>
 
 <script>
-const niches = {Marketing:'mkt',Gastro:'gst','Personal Brand':'brd'};
-const tagCls = {mkt:'tag-mkt',gst:'tag-gst',brd:'tag-brd'};
+const TAG_CLS={Marketing:'tag-mkt',Gastro:'tag-gst','Personal Brand':'tag-brd'};
 let ideas=[], trends=[], ideaFilter='all', trendFilter='all';
 
 function loadData(){
@@ -153,43 +303,53 @@ function loadData(){
     fetch('./trends/trends.json').then(r=>r.json()).catch(()=>[])
   ]).then(([id,tr])=>{
     ideas=id; trends=tr;
-    document.getElementById('ideaCount').textContent=ideas.length;
-    document.getElementById('trendCount').textContent=trends.length;
-    renderFilters();
-    renderIdeas();
-    renderTrends();
-    // Intersection observer
+    renderAll();
     const obs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('show')}),{threshold:.1});
     document.querySelectorAll('.appear').forEach(el=>obs.observe(el));
+    // Menu appears after scroll
+    window.addEventListener('scroll',()=>{
+      document.getElementById('floatingMenu').classList.toggle('hidden',window.scrollY<200);
+      // Track active section
+      const sections=['ideas','trends','hero'];
+      document.querySelectorAll('.menu-item').forEach(m=>m.classList.remove('active'));
+      for(const id of sections){
+        const el=document.getElementById(id);
+        if(el&&el.getBoundingClientRect().top<200){
+          const idx=sections.indexOf(id);
+          document.querySelectorAll('.menu-item')[idx].classList.add('active');
+          break;
+        }
+      }
+    });
   });
 }
 
+function renderAll(){renderFilters();renderTrends();renderIdeas()}
+
 function tagHTML(niche){
   const n=niche==='Personal Brand'?'🧑‍🎤 Brand':niche==='Marketing'?'📊 Marketing':'🍽️ Gastro';
-  return `<span class="tag ${tagCls[niches[niche]]}">${n}</span>`;
+  return `<span class="tag ${TAG_CLS[niche]}">${n}</span>`;
 }
 
 function renderFilters(){
-  const niches=['all','Marketing','Gastro','Personal Brand'];
-  const labels={all:'📱 Všetky',Marketing:'📊 Marketing',Gastro:'🍽️ Gastro','Personal Brand':'🧑‍🎤 Osobný brand'};
-  
-  document.getElementById('trendFilters').innerHTML=niches.map(n=>
-    `<button class="filter-btn ${trendFilter===n?'active':''}" onclick="setTrendFilter('${n}')">${labels[n]}</button>`
-  ).join('');
-  
-  document.getElementById('ideaFilters').innerHTML=niches.map(n=>
-    `<button class="filter-btn ${ideaFilter===n?'active':''}" onclick="setIdeaFilter('${n}')">${labels[n]}</button>`
-  ).join('');
+  const nics=['all','Marketing','Gastro','Personal Brand'];
+  const lbs={all:'Všetky',Marketing:'📊 Marketing',Gastro:'🍽️ Gastro','Personal Brand':'🧑‍🎤 Osobný brand'};
+  document.getElementById('trendFilters').innerHTML=nics.map(n=>`<button class="filter-btn ${trendFilter===n?'active':''}" onclick="setFilter('trend','${n}')">${lbs[n]}</button>`).join('');
+  document.getElementById('ideaFilters').innerHTML=nics.map(n=>`<button class="filter-btn ${ideaFilter===n?'active':''}" onclick="setFilter('idea','${n}')">${lbs[n]}</button>`).join('');
 }
 
-function setTrendFilter(n){trendFilter=n;renderFilters();renderTrends();}
-function setIdeaFilter(n){ideaFilter=n;renderFilters();renderIdeas();}
+function setFilter(type,val){
+  if(type==='trend'){trendFilter=val;renderFilters();renderTrends()}
+  else{ideaFilter=val;renderFilters();renderIdeas()}
+}
 
 function renderTrends(){
   const f=trendFilter==='all'?trends:trends.filter(t=>t.niche===trendFilter);
-  document.getElementById('trendGrid').innerHTML=f.map(t=>`
-    <div class="card">
-      <div class="card-top">${tagHTML(t.niche)}<span class="trend-dot"></span></div>
+  document.getElementById('trendGrid').innerHTML=f.map((t,i)=>`
+    <div class="card" onclick="openTrendDetail(${i})">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+        ${tagHTML(t.niche)}<span class="trend-dot"></span>
+      </div>
       <h3>${t.title}</h3>
       <p>${t.description}</p>
       <div class="insight-box"><div class="ilbl">💡 Ako využiť</div><div class="itxt">${t.insight}</div></div>
@@ -202,7 +362,7 @@ function renderTrends(){
 function renderIdeas(){
   const f=ideaFilter==='all'?ideas:ideas.filter(i=>i.niche===ideaFilter);
   document.getElementById('ideaGrid').innerHTML=f.map((i,idx)=>`
-    <div class="card">
+    <div class="card" onclick="openIdeaDetail(${idx})">
       <div class="card-tags">
         ${tagHTML(i.niche)}
         <span class="tag-sm">${i.format||'Reel'}</span>
@@ -211,22 +371,125 @@ function renderIdeas(){
       </div>
       <h3>${i.title}</h3>
       <p>${i.hook}</p>
-      <button class="detail-btn" onclick="toggleDetail(${idx})">▶ Detailný scénar</button>
-      <div class="details" id="detail-${idx}">
-        ${i.target_audience?`<div><div class="detail-label">🎯 Cieľová skupina</div><div class="detail-txt">${i.target_audience}</div></div>`:''}
-        ${i.tone_of_voice?`<div><div class="detail-label">🎤 Tone of Voice</div><div class="detail-txt">${i.tone_of_voice}</div></div>`:''}
-        ${i.length?`<div><div class="detail-label">⏱ Dĺžka</div><div class="detail-txt">${i.length}</div></div>`:''}
+      <div class="card-footer">
+        <span style="font-size:12px;color:#FF6B35;font-weight:600">Klikni pre detail →</span>
       </div>
-      ${i.path?`<div class="card-footer"><a href="${i.path}" download class="dl-link">⬇ Stiahnuť .md</a></div>`:''}
     </div>
   `).join('');
   if(!f.length) document.getElementById('ideaGrid').innerHTML='<p style="color:rgba(255,255,255,.3);text-align:center;padding:32px;grid-column:1/-1">Žiadne nápady pre túto niku.</p>';
 }
 
-function toggleDetail(idx){
-  const el=document.getElementById('detail-'+idx);
-  el.classList.toggle('open');
+function openTrendDetail(idx){
+  const t=trendFilter==='all'?trends[idx]:trends.filter(i=>i.niche===trendFilter)[idx];
+  if(!t)return;
+  document.getElementById('modalBody').innerHTML=`
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:16px">${tagHTML(t.niche)}<span class="trend-dot"></span></div>
+    <h2>${t.title}</h2>
+    <div class="hook">${t.description}</div>
+    <div class="modal-section">
+      <div class="modal-label">💡 Ako využiť</div>
+      <div class="modal-text">${t.insight}</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">Platforma</div>
+      <div class="modal-text">${t.platform}</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">Zdroj</div>
+      <div class="modal-text">${t.source}</div>
+    </div>
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
 }
+
+function openIdeaDetail(idx){
+  const i=ideaFilter==='all'?ideas[idx]:ideas.filter(n=>n.niche===ideaFilter)[idx];
+  if(!i)return;
+  let details='';
+  if(i.target_audience) details+=`<div class="modal-section"><div class="modal-label">🎯 Cieľová skupina</div><div class="modal-text">${i.target_audience}</div></div>`;
+  if(i.tone_of_voice) details+=`<div class="modal-section"><div class="modal-label">🎤 Tone of Voice</div><div class="modal-text">${i.tone_of_voice}</div></div>`;
+  if(i.length) details+=`<div class="modal-section"><div class="modal-label">⏱ Dĺžka</div><div class="modal-text">${i.length}</div></div>`;
+  
+  document.getElementById('modalBody').innerHTML=`
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px">
+      ${tagHTML(i.niche)}
+      <span class="tag-sm">${i.format||'Reel'}</span>
+      <span class="tag-sm">${i.platform||'IG/TikTok'}</span>
+    </div>
+    <h2>${i.title}</h2>
+    <div class="hook">${i.hook}</div>
+    ${details}
+    <button class="modal-btn" onclick="downloadPDF('${i.title}')">⬇ Stiahnuť ako PDF</button>
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(e){
+  if(e&&e.target!==document.getElementById('modalOverlay')) return;
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.getElementById('modalBody').innerHTML='';
+  document.body.style.overflow='';
+}
+
+function toggleMenu(){
+  document.getElementById('menuDropdown').classList.toggle('open');
+}
+
+function scrollTo(id){
+  document.getElementById('menuDropdown').classList.remove('open');
+  document.getElementById(id)?.scrollIntoView({behavior:'smooth'});
+}
+
+// PDF Export
+function downloadPDF(title){
+  const modal=document.getElementById('modalContent');
+  const body=document.getElementById('modalBody');
+  
+  // Build print-friendly content
+  const printContent=body.cloneNode(true);
+  // Remove the PDF button from print content
+  const btn=printContent.querySelector('.modal-btn');
+  if(btn) btn.remove();
+  
+  const printWin=window.open('','_blank');
+  printWin.document.write(`<!DOCTYPE html><html><head>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      *{margin:0;padding:0;box-sizing:border-box}
+      body{font-family:'Nunito',sans-serif;color:#333;padding:40px;line-height:1.6}
+      h1{font-size:28px;font-weight:800;margin-bottom:8px;color:#1a1a2e}
+      .hook{color:#666;font-size:14px;margin-bottom:24px}
+      .section{margin-bottom:20px}
+      .label{font-size:11px;font-weight:700;color:#FF6B35;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+      .text{color:#555;font-size:13px;line-height:1.6}
+      .tags{display:flex;gap:8px;margin-bottom:16px}
+      .tag{font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;background:#f5f5f5;color:#333}
+      .footer{margin-top:40px;padding-top:16px;border-top:1px solid #ddd;font-size:11px;color:#999;text-align:center}
+      hr{border:none;border-top:1px solid #eee;margin:20px 0}
+      @page{margin:20mm}
+    </style>
+  </head><body>
+    <div class="tags">${printContent.querySelector('[style*="flex"]')?.innerHTML||''}</div>
+    <h1>${printContent.querySelector('h2')?.innerText||title}</h1>
+    <div class="hook">${printContent.querySelector('.hook')?.innerHTML||''}</div>
+    ${Array.from(printContent.querySelectorAll('.modal-section')).map(s=>`
+      <div class="section">
+        <div class="label">${s.querySelector('.modal-label')?.innerHTML||''}</div>
+        <div class="text">${s.querySelector('.modal-text')?.innerHTML||''}</div>
+      </div>
+    `).join('')}
+    <hr>
+    <div class="footer">Generated by Launchpad Marketing • Bc. Kevin Beke</div>
+  </body></html>`);
+  printWin.document.close();
+  printWin.focus();
+  printWin.print();
+}
+
+// ESC to close modal
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
 loadData();
 </script>
