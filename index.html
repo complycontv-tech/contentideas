@@ -1,18 +1,234 @@
 <!DOCTYPE html>
 <html lang="sk">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="./vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Bc. Kevin Beke — Content Ideas Hub. Marketing, Gastro, Personal Brand pre slovenský trh." />
-    <title>Bc. Kevin Beke — Content Ideas Hub</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="./assets/index-CXoSgISV.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CxmNIinI.css">
-  </head>
-  <body class="gradient-bg">
-    <div id="root"></div>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Bc. Kevin Beke — Content Ideas Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;min-height:100vh}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;opacity:.12}
+.hero-bg div{position:absolute;border-radius:50%;filter:blur(120px);animation:float 6s ease-in-out infinite}
+.hero-bg .b1{top:25%;left:20%;width:500px;height:500px;background:#a855f7}
+.hero-bg .b2{bottom:20%;right:20%;width:500px;height:500px;background:#ec4899;animation-delay:-3s}
+.hero-bg .b3{top:40%;left:50%;width:300px;height:300px;background:#3b82f6;animation-delay:-1.5s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-25px)}}
+.hero h1{font-size:clamp(2.5rem,7vw,5rem);font-weight:800;margin-bottom:16px;background:linear-gradient(135deg,#f093fb,#f5576c,#4facfe);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{color:rgba(255,255,255,.5);font-size:clamp(.9rem,2vw,1.2rem);max-width:600px;margin:0 auto}
+.hero .btns{margin-top:40px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero .btns a{padding:14px 28px;border-radius:999px;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;transition:.3s;display:inline-flex;align-items:center;gap:8px}
+.hero .btns .btn-trend{background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);color:#fff}
+.hero .btns .btn-primary{background:linear-gradient(135deg,#9333ea,#db2777);color:#fff;border:none}
+.hero .stats{margin-top:60px;display:flex;gap:clamp(1.5rem,5vw,4rem);justify-content:center}
+.hero .stats .num{font-size:clamp(1.5rem,3vw,2rem);font-weight:700;background:linear-gradient(135deg,#f093fb,#f5576c,#4facfe);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .stats .lbl{color:rgba(255,255,255,.4);font-size:12px;margin-top:4px}
+
+/* Sections */
+.section{padding:5rem 0}
+.section-label{color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.2em;font-size:11px;text-align:center;margin-bottom:12px}
+.section-title{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;text-align:center;margin-bottom:8px;background:linear-gradient(135deg,#f093fb,#f5576c,#4facfe);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-sub{color:rgba(255,255,255,.4);font-size:14px;text-align:center;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+
+/* Filters */
+.filters{display:flex;gap:8px;justify-content:center;margin-bottom:32px;flex-wrap:wrap}
+.filter-btn{padding:8px 16px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid rgba(255,255,255,.1);background:transparent;color:rgba(255,255,255,.5);cursor:pointer;transition:.2s}
+.filter-btn:hover{border-color:rgba(255,255,255,.3)}
+.filter-btn.active{background:rgba(255,255,255,.2);color:#fff;border-color:rgba(255,255,255,.3)}
+
+/* Cards grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{background:linear-gradient(135deg,rgba(240,147,251,.12),rgba(245,87,108,.08),rgba(79,172,254,.12));backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1.25rem;transition:.3s}
+.card:hover{transform:scale(1.02)}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px}
+.tag-mkt{background:#DBEAFE;color:#1E40AF;border:1px solid #BFDBFE}
+.tag-gst{background:#FEF3C7;color:#92400E;border:1px solid #FDE68A}
+.tag-brd{background:#EDE9FE;color:#6D28D9;border:1px solid #DDD6FE}
+.tag-sm{font-size:11px;color:rgba(255,255,255,.4);background:rgba(255,255,255,.05);padding:3px 10px;border-radius:12px;display:inline-block}
+.trend-dot{width:10px;height:10px;border-radius:50%;background:#EF4444;box-shadow:0 0 12px rgba(239,68,68,.4)}
+.card h3{color:#fff;font-size:15px;font-weight:600;margin-bottom:8px}
+.card p{color:rgba(255,255,255,.5);font-size:13px;line-height:1.6;margin-bottom:12px}
+.insight-box{background:rgba(0,0,0,.2);border-radius:8px;padding:12px;margin-bottom:12px}
+.insight-box .ilbl{font-size:11px;font-weight:600;color:#c084fc;margin-bottom:4px}
+.insight-box .itxt{color:rgba(255,255,255,.6);font-size:12px;line-height:1.5}
+.card-meta{display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.3)}
+.card-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.detail-btn{color:#c084fc;cursor:pointer;font-size:12px;border:none;background:none;display:flex;align-items:center;gap:4px;transition:.2s}
+.detail-btn:hover{color:#a855f7}
+.details{display:none;margin-top:12px;flex-direction:column;gap:12px}
+.details.open{display:flex}
+.detail-label{font-size:11px;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:2px}
+.detail-txt{color:rgba(255,255,255,.6);font-size:12px}
+.dl-link{color:rgba(255,255,255,.4);text-decoration:none;font-size:12px;transition:.2s;display:inline-flex;align-items:center;gap:4px}
+.dl-link:hover{color:#fff}
+
+/* Contact */
+.contact{padding:4rem 0;text-align:center}
+.contact .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.contact .cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:999px;font-weight:600;font-size:14px;text-decoration:none;transition:.2s}
+.contact .cta-ig{background:linear-gradient(135deg,#9333ea,#db2777);color:#fff}
+.contact .cta-em{background:rgba(255,255,255,.1);backdrop-filter:blur(8px);color:#fff;border:1px solid rgba(255,255,255,.1)}
+
+footer{text-align:center;padding:20px;color:rgba(255,255,255,.1);font-size:12px}
+
+@keyframes appear{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+.appear{opacity:0;transform:translateY(30px);transition:all .7s ease-out}
+.appear.show{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"><div class="b1"></div><div class="b2"></div><div class="b3"></div></div>
+  <div>
+    <p style="color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.25em;font-size:12px;margin-bottom:20px">— Content Ideas Hub —</p>
+    <h1>Bc. Kevin Beke</h1>
+    <p>Marketingová stratégia • Content Creation • Osobný brand • Slovensko</p>
+    <div class="btns">
+      <a href="#trends" class="btn-trend">🔥 Trendy</a>
+      <a href="#ideas" class="btn-trend">📱 Nápady</a>
+      <a href="#contact" class="btn-primary">✉️ Kontakt</a>
+    </div>
+    <div class="stats" id="stats">
+      <div><div class="num" id="ideaCount">0</div><div class="lbl">Nápadov</div></div>
+      <div><div class="num" id="trendCount">0</div><div class="lbl">Trendov</div></div>
+      <div><div class="num">3</div><div class="lbl">Niky</div></div>
+      <div><div class="num">SK</div><div class="lbl">Trh</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRENDS -->
+<section class="section" id="trends">
+  <div class="container appear">
+    <div class="section-label">Trending</div>
+    <h2 class="section-title">🔥 Aktuálne trendy</h2>
+    <p class="section-sub">Sledované denne pre slovenský trh</p>
+    <div class="filters" id="trendFilters"></div>
+    <div class="grid" id="trendGrid"></div>
+  </div>
+</section>
+
+<!-- IDEAS -->
+<section class="section" id="ideas">
+  <div class="container appear">
+    <div class="section-label">Content</div>
+    <h2 class="section-title">📱 Denné nápady na obsah</h2>
+    <p class="section-sub">Každý nápad obsahuje scénar, cieľovku a vizuálne tipy</p>
+    <div class="filters" id="ideaFilters"></div>
+    <div class="grid" id="ideaGrid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container appear">
+    <h2 class="section-title">Poďme spolupracovať</h2>
+    <p class="section-sub">Sleduj ma na Instagrame pre každodenný obsah o marketingu, gastro a osobnom brande.</p>
+    <div class="cta-row">
+      <a href="https://www.instagram.com/orchisitalica/" target="_blank" class="cta cta-ig">📸 @orchisitalica</a>
+      <a href="mailto:kevin@launchpadmarketing.com" class="cta cta-em">✉️ kevin@launchpadmarketing.com</a>
+    </div>
+  </div>
+  <footer>© 2026 Bc. Kevin Beke</footer>
+</section>
+
+<script>
+const niches = {Marketing:'mkt',Gastro:'gst','Personal Brand':'brd'};
+const tagCls = {mkt:'tag-mkt',gst:'tag-gst',brd:'tag-brd'};
+let ideas=[], trends=[], ideaFilter='all', trendFilter='all';
+
+function loadData(){
+  Promise.all([
+    fetch('./ideas-list.json').then(r=>r.json()).catch(()=>[]),
+    fetch('./trends/trends.json').then(r=>r.json()).catch(()=>[])
+  ]).then(([id,tr])=>{
+    ideas=id; trends=tr;
+    document.getElementById('ideaCount').textContent=ideas.length;
+    document.getElementById('trendCount').textContent=trends.length;
+    renderFilters();
+    renderIdeas();
+    renderTrends();
+    // Intersection observer
+    const obs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('show')}),{threshold:.1});
+    document.querySelectorAll('.appear').forEach(el=>obs.observe(el));
+  });
+}
+
+function tagHTML(niche){
+  const n=niche==='Personal Brand'?'🧑‍🎤 Brand':niche==='Marketing'?'📊 Marketing':'🍽️ Gastro';
+  return `<span class="tag ${tagCls[niches[niche]]}">${n}</span>`;
+}
+
+function renderFilters(){
+  const niches=['all','Marketing','Gastro','Personal Brand'];
+  const labels={all:'📱 Všetky',Marketing:'📊 Marketing',Gastro:'🍽️ Gastro','Personal Brand':'🧑‍🎤 Osobný brand'};
+  
+  document.getElementById('trendFilters').innerHTML=niches.map(n=>
+    `<button class="filter-btn ${trendFilter===n?'active':''}" onclick="setTrendFilter('${n}')">${labels[n]}</button>`
+  ).join('');
+  
+  document.getElementById('ideaFilters').innerHTML=niches.map(n=>
+    `<button class="filter-btn ${ideaFilter===n?'active':''}" onclick="setIdeaFilter('${n}')">${labels[n]}</button>`
+  ).join('');
+}
+
+function setTrendFilter(n){trendFilter=n;renderFilters();renderTrends();}
+function setIdeaFilter(n){ideaFilter=n;renderFilters();renderIdeas();}
+
+function renderTrends(){
+  const f=trendFilter==='all'?trends:trends.filter(t=>t.niche===trendFilter);
+  document.getElementById('trendGrid').innerHTML=f.map(t=>`
+    <div class="card">
+      <div class="card-top">${tagHTML(t.niche)}<span class="trend-dot"></span></div>
+      <h3>${t.title}</h3>
+      <p>${t.description}</p>
+      <div class="insight-box"><div class="ilbl">💡 Ako využiť</div><div class="itxt">${t.insight}</div></div>
+      <div class="card-meta"><span>${t.platform}</span><span>${t.source}</span></div>
+    </div>
+  `).join('');
+  if(!f.length) document.getElementById('trendGrid').innerHTML='<p style="color:rgba(255,255,255,.3);text-align:center;padding:32px;grid-column:1/-1">Žiadne trendy pre túto niku.</p>';
+}
+
+function renderIdeas(){
+  const f=ideaFilter==='all'?ideas:ideas.filter(i=>i.niche===ideaFilter);
+  document.getElementById('ideaGrid').innerHTML=f.map((i,idx)=>`
+    <div class="card">
+      <div class="card-tags">
+        ${tagHTML(i.niche)}
+        <span class="tag-sm">${i.format||'Reel'}</span>
+        <span class="tag-sm">${i.platform||'IG/TikTok'}</span>
+        <span style="margin-left:auto;font-size:11px;color:rgba(255,255,255,.3)">${i.date||''}</span>
+      </div>
+      <h3>${i.title}</h3>
+      <p>${i.hook}</p>
+      <button class="detail-btn" onclick="toggleDetail(${idx})">▶ Detailný scénar</button>
+      <div class="details" id="detail-${idx}">
+        ${i.target_audience?`<div><div class="detail-label">🎯 Cieľová skupina</div><div class="detail-txt">${i.target_audience}</div></div>`:''}
+        ${i.tone_of_voice?`<div><div class="detail-label">🎤 Tone of Voice</div><div class="detail-txt">${i.tone_of_voice}</div></div>`:''}
+        ${i.length?`<div><div class="detail-label">⏱ Dĺžka</div><div class="detail-txt">${i.length}</div></div>`:''}
+      </div>
+      ${i.path?`<div class="card-footer"><a href="${i.path}" download class="dl-link">⬇ Stiahnuť .md</a></div>`:''}
+    </div>
+  `).join('');
+  if(!f.length) document.getElementById('ideaGrid').innerHTML='<p style="color:rgba(255,255,255,.3);text-align:center;padding:32px;grid-column:1/-1">Žiadne nápady pre túto niku.</p>';
+}
+
+function toggleDetail(idx){
+  const el=document.getElementById('detail-'+idx);
+  el.classList.toggle('open');
+}
+
+loadData();
+</script>
+</body>
 </html>
