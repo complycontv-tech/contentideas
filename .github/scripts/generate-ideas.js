@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 /**
  * Launchpad Marketing — Daily Idea Generator 🇸🇰
- * Creates fresh content ideas for Slovak market every day.
- * Output: .md files in ideas/{Niche}/YYYY-MM-DD-{slug}.md
+ * Generates rich content ideas for Slovak market with full production details.
  */
 
 const fs = require('fs');
@@ -11,43 +10,113 @@ const path = require('path');
 const today = new Date().toISOString().split('T')[0];
 const IDEAS_DIR = path.join(__dirname, '../../ideas');
 
-const templates = {
-  Marketing: [
-    { title: 'Prečo tvoje IG Stories nikto nepozerá?', hook: 'Píšeš Stories každý deň, ale engagement je nula? Tu je 5 dôvodov, prečo ťa ľudia preskakujú.', tags: ['marketing', 'instagram', 'stories'] },
-    { title: 'Ako využiť User Generated Content na Slovensku', hook: 'UGC je najlacnejší a najefektívnejší marketing. Prečo ho slovenské značky stále ignorujú?', tags: ['marketing', 'ugc', 'trendy'] },
-    { title: 'Meta Ads vs Google Ads: Čo funguje na SK trhu?', hook: 'Máš rozpočet na reklamu, ale nevieš, kam ho dať? Poďme si rozobrať, čo reálne funguje na slovenskom trhu.', tags: ['marketing', 'ads', 'comparison'] },
-    { title: 'SEO pre začiatočníkov: Prvých 30 dní', hook: 'SEO nie je veda. Tu je presný plán na prvých 30 dní, ktorý zvládne aj úplný začiatočník.', tags: ['marketing', 'seo', 'navod'] },
-    { title: 'Prečo ti newsletter nikto neotvára?', hook: 'Máš 500 odberateľov ale otvára ich 10? Tu je 5 vecí, ktoré robíš zle.', tags: ['marketing', 'email', 'newsletter'] },
-    { title: 'Ako písať virálne titulky (slovensky)', hook: 'Titulka rozhoduje o tom, či ťa niekto klikne alebo preskočí. Tu je 7 vzorcov, ktoré fungujú na slovenské publikum.', tags: ['marketing', 'copywriting', 'headlines'] },
-  ],
-  Gastro: [
-    { title: 'Ako spraviť z reštaurácie Instagram fenomén', hook: 'Stačia 3 zmeny v tvojom IG profile a ľudia začnú prichádzať len z Instagramu.', tags: ['gastro', 'instagram', 'marketing'] },
-    { title: 'Najlepšie slovenské food miesta, o ktorých nikto nevie', hook: 'Zabudni na známe reštaurácie. Tieto 3 miesta ťa dostanú kvalitou aj cenou.', tags: ['gastro', 'slovensko', 'tipy'] },
-    { title: 'Prečo slovenské bistrá nevedia predávať kávu?', hook: 'Káva je najpredávanejší produkt v gastre, ale 90% bistier ju nevie správne odkomunikovať. Tu je návod.', tags: ['gastro', 'kava', 'predaj'] },
-    { title: 'Food styling pre začiatočníkov: Ako fotiť jedlo', hook: 'Na fotenie jedla nepotrebuješ profi foťák. Tu je 5 trikov ako spraviť estetické fotky mobilom.', tags: ['gastro', 'fotenie', 'instagram'] },
-    { title: 'Recenzia: Najlepšia pizza v Bratislave', hook: 'Otestoval som 7 pizzérií v BA za mesiac. Toto je víťaz (a podvod, ktorému sa vyhnúť).', tags: ['gastro', 'bratislava', 'recenzia'] },
-    { title: 'Ako spraviť virálne video z tvojho bistra', hook: 'Jeden Reel ti môže zaplniť reštauráciu na týždeň. Tu je presný postup, ako na to.', tags: ['gastro', 'tiktok', 'viral'] },
-  ],
-  'Personal Brand': [
-    { title: '3 veci, ktoré som sa naučil za rok budovania brandu', hook: 'Rok som budoval osobnú značku od nuly. Tu je 3 vecí, ktoré by som si prial vedieť na začiatku.', tags: ['personal-brand', 'skusenosti', 'learnt'] },
-    { title: 'Prečo ťa na LinkedIne nikto nesleduje?', hook: 'Máš plný profil, ale nikto ťa nesleduje? Tu je dôvod (a riešenie).', tags: ['personal-brand', 'linkedin', 'growth'] },
-    { title: 'Ako začať s content creation bez drahej techniky', hook: 'Myslíš si, že na tvorbu obsahu potrebuješ Sony kam eru a svetlá? Tu je pravda.', tags: ['personal-brand', 'content-creation', 'zaciatky'] },
-    { title: 'Tvoja prvá spolupráca so značkou: Návod', hook: 'Značka ťa oslovila, ale nevieš, čo pýtať? Tu je presný návod na prvú platenú spoluprácu.', tags: ['personal-brand', 'spolupraca', 'biznis'] },
-    { title: 'Ako rozprávať príbehy, ktoré ľudí zaujmú', hook: 'Storytelling je najsilnejší nástroj brandu. Ale 90% ľudí ho robí zle. Tu je návod.', tags: ['personal-brand', 'storytelling', 'content'] },
-    { title: 'Prečo autenticita vyhráva nad dokonalosťou', hook: 'Dokonalý feed je mŕtvy. Ľudia chcú vidieť tvoju tvár, tvoje chyby a tvoj príbeh.', tags: ['personal-brand', 'autenticita', 'trendy'] },
-  ]
-};
+const ideaPool = [
+  // ===== MARKETING =====
+  {
+    niche: 'Marketing',
+    title: 'Prečo tvoje IG Stories nikto nepozerá?',
+    hook: 'Píšeš Stories každý deň, ale engagement je nula? Tu je 5 dôvodov, prečo ťa ľudia preskakujú.',
+    target: 'Majitelia malých firiem, freelanceri, content creatori (25-40), ktorí už tvoria obsah ale nevidia výsledky.',
+    tone: 'Priateľský, ale odborný. Tykanie. "Kamoš, čo ti povie tvrdú pravdu."',
+    script: '1. Hook (0-3s): "Pošleš 10 Stories denne a nikto nereaguje?"\n2. Problem (3-15s): "Stráviš hodinu fotením, píšeš ankety, ale odklepávajú to."\n3. Reveal (15-30s): "Tu je 5 dôvodov: 1. Prvý slide nie je hook, 2. Nepoužívaš poll, 3. Príliš veľa textu, 4. Žiadna konzistencia štýlu, 5. Nepozeráš analytics."\n4. Riešenie (30-45s): "Oprav jednu vec denne. Zajtra: hook v prvom slide."\n5. CTA (45-50s): "Napíš STORIES a pošlem ti checklist."',
+    length: 'Reel 45-60s alebo Carousel 5 slidov',
+    visualTips: 'Svetlo: Denné svetlo z okna, 45° uhol. Žiadne tvrdé tiene. Kamera: iPhone 13+ zadná kamera, 4K 30fps. Kompozícia: Tvár v strede, texty v safe zone. Farby: #1A56DB akcenty na bielom pozadí. Strih: Rýchly, každé 3-4s strih, beat synced.'
+  },
+  {
+    niche: 'Marketing',
+    title: 'SEO pre začiatočníkov: Prvých 30 dní',
+    hook: 'SEO nie je veda. Tu je presný plán na prvých 30 dní, ktorý zvládne aj úplný začiatočník.',
+    target: 'Začínajúci podnikatelia a freelance marketéri (22-35), ktorí chcú pochopiť SEO.',
+    tone: 'Edukačný, trpezlivý. Vysvetľuje komplexné veci jednoducho.',
+    script: '1. Hook (0-3s): "Myslíš, že SEO je nukleárna fyzika?"\n2. (3-20s): "Nie je. Tu je plán na 30 dní."\n3. (20-40s): "Týždeň 1: Key research. Týždeň 2: Napíš 1 post. Týždeň 3: Interné linky. Týždeň 4: Meraj výsledky."\n4. (40-55s): "Jeden post denne ťa dostane na page 1 za 90 dní."',
+    length: 'Carousel 7 slidov alebo Reel 55s',
+    visualTips: 'Screen recording z Google Search Console a Ahrefs. Zelené a modré grafy. Textové slidov s postupnými krokmi. Použi mockup telefónu pre ukážku výsledkov.'
+  },
+  {
+    niche: 'Marketing',
+    title: 'Meta Ads vs Google Ads na Slovensku',
+    hook: 'Máš budget 500€ na reklamu. Kam to dáš? Rozbor čo funguje na slovenskom trhu.',
+    target: 'Podnikatelia a majitelia e-shopov (25-45), ktorí investujú do reklamy.',
+    tone: 'Analytický, dáta-driven. "Žiadne dojmy, len čísla."',
+    script: '1. Hook: "500€ do reklamy. Meta alebo Google?"\n2. Dáta: Priemerné CPA na SK trhu.\n3. Kedy Meta: vizuálne produkty, impulzívny nákup.\n4. Kedy Google: vysoký intent, služby, B2B.\n5. Odporúčanie: 70/30 split podľa biznisu.',
+    length: 'Reel 60s',
+    visualTips: 'Split screen: Meta vs Google rozhranie. Grafy CPA porovnanie, červená/zelená. Zvýrazni kľúčové čísla. Použi data screenshots.'
+  },
 
-const niches = Object.keys(templates);
+  // ===== GASTRO =====
+  {
+    niche: 'Gastro',
+    title: 'Najlepšie skryté gastro miesta na Slovensku',
+    hook: 'Zabudni na známe reštaurácie. Tieto 3 miesta ťa dostanú kvalitou aj atmosférou.',
+    target: 'Foodies, mladí ľudia 20-35 z väčších miest (BA, KE, TN, BB), ktorí radi objavujú nové miesta.',
+    tone: 'Nadšený, autentický. "Kamoš, čo ti dáva insider tipy."',
+    script: '1. Hook: "TOP 3 miesta, o ktorých nikto nerozpráva."\n2. Miesto 1: Lokalita, čo ochutnať, cena, vibe.\n3. Miesto 2: To isté + instagramovateľnosť.\n4. Miesto 3: Hidden gem + prečo práve tam.\n5. CTA: "Kde si ty naposledy objavil skvelé miesto?"',
+    length: 'Reel 45-60s',
+    visualTips: 'Svetlo: Zlatá hodinka (60 min pred západom). 45° bočné svetlo na jedlo. Kamera: 4K 60fps pre slow-mo. Kompozícia: Top-down na jedlo, 45° na nápoje. Farba: Teplé tóny (+5 temp). Stabilizácia: Gimbal alebo stôl.'
+  },
+  {
+    niche: 'Gastro',
+    title: 'Ako spraviť z reštaurácie Instagram fenomén',
+    hook: 'Stačia 3 zmeny v tvojom IG profile a ľudia začnú prichádzať len z Instagramu.',
+    target: 'Majitelia reštaurácií, bister, kaviarní (28-50), ktorí chcú viac zákazníkov cez sociálne siete.',
+    tone: 'Praktický, business-oriented. "Žiadna teória, len to čo funguje."',
+    script: '1. Hook: "Tvoja reštaurácia je skvelá, ale IG ťa stojí zákazníkov."\n2. Chyba 1: Žiadna atmosféra na fotkách.\n3. Chyba 2: Bio nehovorí čo ponúkate.\n4. Chyba 3: Nevyužívate User Generated Content.\n5. Fix: 3 zmeny do týždňa.',
+    length: 'Reel 55-65s',
+    visualTips: 'Interiérové zábery: Široký uhol (24mm) pre atmosféru, makro (50mm+) pre jedlo. Svetlo: Kombinuj okenné + teplé umelé (2800K). Nespoliehaj sa na stropné svetlá. Použi food styling: bylinky, omáčka kvapnutá umelecky.'
+  },
+  {
+    niche: 'Gastro',
+    title: 'Koľko reálne zarábajú slovenské reštaurácie?',
+    hook: 'Myslíš, že reštaurácie zarábajú milióny? Poď sa pozrieť na reálne čísla.',
+    target: 'Podnikatelia, investori, ľudia čo rozmýšľajú nad otvorením reštaurácie (25-40).',
+    tone: 'Transparentný, edukatívny, "behind the curtain".',
+    script: '1. Hook: "Otvoriť reštauráciu = sen? Skôr nočná mora."\n2. Náklady: Nájom, energie, suroviny, mzdy.\n3. Marža: Koľko reálne zostane.\n4. Kedy sa to oplatí: High volume alebo high margin.\n5. Rada: Začni s pop-up alebo food truck.',
+    length: 'Reel 60-75s',
+    visualTips: 'Infografika: koláčové grafy nákladov. Animovaná osnova. Modrá/zelená pre profit, červená pre stratu. Biznis estetika: čisté pozadie, profesionálne písmo.'
+  },
 
-// Generate 2-3 ideas from each niche
+  // ===== PERSONAL BRAND =====
+  {
+    niche: 'Personal Brand',
+    title: 'Prečo ťa na LinkedIne nikto nesleduje?',
+    hook: 'Máš plný profil, ale nikto neinteraguje. Tu je dôvod.',
+    target: 'Mladí profesionáli, freelanceri, konzultanti (24-38), ktorí chcú budovať osobnú značku.',
+    tone: 'Úprimný, direct. "Poviem ti to na rovinu."',
+    script: '1. Hook: "Skontrolujem tvoj LinkedIn profil a poviem ti, čo je zle."\n2. Chyba 1: Profilová fotka.\n3. Chyba 2: Bio bez value proposition.\n4. Chyba 3: Content je nuda.\n5. Fix: Nová fotka, prepísané bio, 3 posty týždenne.',
+    length: 'Carousel 6 slidov alebo Reel 50s',
+    visualTips: 'Screenshoty zlých/dobrých LinkedIn profilov (anonymizované). Pred/po porovnanie. Zelené fajky pre "good", červené kríže pre "bad". Použi LinkedIn modrú (#0A66C2) ako akcent.'
+  },
+  {
+    niche: 'Personal Brand',
+    title: '3 nástroje, ktoré ti ušetria 10h týždenne',
+    hook: 'Strácaš čas tvorbou obsahu? Tieto 3 nástroje ti ho vrátia.',
+    target: 'Content creatori, podnikatelia, busy profesionáli (22-40), ktorí chcú byť efektívnejší.',
+    tone: 'Užitočný, tool-focused. "Nástroje, ktoré reálne používam."',
+    script: '1. Hook: "10 hodín týždenne naspäť? Tu je ako."\n2. Nástroj 1: Notion na plánovanie.\n3. Nástroj 2: Canva na grafiku (AI features).\n4. Nástroj 3: CapCut na strih videa.\n5. Workflow: Ako to celé funguje dokopy.',
+    length: 'Carousel 7 slidov',
+    visualTips: 'Screen recording z každého nástroja. Mockup UI. Rozdeľ na tri sekcie - každý nástroj má 2 slid. Farebne odlíš (modrá/Charcoal/zelená). Posledný slide: workflow diagram.'
+  },
+  {
+    niche: 'Personal Brand',
+    title: 'Ako rozprávať príbehy, ktoré zaujmú',
+    hook: 'Storytelling je najsilnejší nástroj. Ale 90% ľudí ho robí zle.',
+    target: 'Content creatori, lídri, konzultanti (25-45), ktorí chcú lepšie komunikovať.',
+    tone: 'Inšpiratívny, ale praktický. "Príbeh + lesson learned."',
+    script: '1. Hook: "Každý hovorí o storytellingu. Málokto ho vie reálne použiť."\n2. Štruktúra: Hook → Problem → Journey → Lesson → CTA\n3. Príklad: Ako som zlyhal pri prvom klientovi.\n4. Template: "Pred rokom som [situácia]. Dnes [výsledok]. Tu je čo som sa naučil."',
+    length: 'Reel 60-90s',
+    visualTips: 'Talking head + B-roll (zábery z reálneho života). Striedaj detail tváre a wide shot. Svetlo: Rembrandt (45° bočné, 45° výška). Použi teplé tóny pre storytelling. Pomalšie strihanie (každých 5-6s).'
+  }
+];
+
+const niches = [...new Set(ideaPool.map(i => i.niche))];
+
 for (const niche of niches) {
   const nicheDir = path.join(IDEAS_DIR, niche);
   fs.mkdirSync(nicheDir, { recursive: true });
 
-  const pool = templates[niche];
-  // Shuffle and pick 2-3
-  const selected = pool.sort(() => Math.random() - 0.5).slice(0, 2 + Math.floor(Math.random() * 2));
+  const pool = ideaPool.filter(i => i.niche === niche);
+  // Pick 2-3 from each niche (dnes všetky)
+  const selected = pool; // .sort(() => Math.random() - 0.5).slice(0, Math.min(3, pool.length));
 
   for (const idea of selected) {
     const slug = idea.title
@@ -59,34 +128,46 @@ for (const niche of niches) {
     const filename = `${today}-${slug}.md`;
     const filepath = path.join(nicheDir, filename);
 
-    const formats = ['Reel', 'Carousel', 'Stories', 'TikTok'];
-    const platforms = ['IG', 'IG/TikTok', 'TikTok'];
-    const format = formats[Math.floor(Math.random() * formats.length)];
-    const platform = platforms[Math.floor(Math.random() * platforms.length)];
-
     const content = `---
 title: "${idea.title}"
-niche: ${niche}
+niche: ${idea.niche}
 hook: "${idea.hook}"
-format: ${format}
-platform: ${platform}
+format: Reel
+platform: IG/TikTok
 status: draft
 date: ${today}
-tags: [${idea.tags.map(t => t.toLowerCase()).join(', ')}]
+tags: [${idea.niche.toLowerCase().replace(' ', '-')}, content]
+target_audience: "${idea.target}"
+tone_of_voice: "${idea.tone}"
+length: "${idea.length}"
 ---
 
 # ${idea.title}
 
 **Hook:** ${idea.hook}
 
-**Formát:** ${format} | **Platforma:** ${platform}
+**Cieľová skupina:** ${idea.target}
 
-## Osnova
-- Bod 1
-- Bod 2
-- Bod 3
+**Tone of Voice:** ${idea.tone}
+
+**Dĺžka:** ${idea.length}
+
+---
+
+## Scénar
+
+${idea.script}
+
+---
+
+## Vizuálne tipy
+
+${idea.visualTips}
+
+---
 
 ## CTA
+
 -
 `;
 
@@ -94,5 +175,9 @@ tags: [${idea.tags.map(t => t.toLowerCase()).join(', ')}]
     console.log(`✅ ${niche}/${filename}`);
   }
 }
+
+// Update ideas-list.json
+const { execSync } = require('child_process');
+execSync('node ' + path.join(__dirname, 'build-json.js'), { cwd: path.dirname(__dirname) });
 
 console.log(`\n🎉 Generated ${today} — hotovo!`);

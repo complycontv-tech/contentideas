@@ -1,82 +1,119 @@
 [
   {
-    "title": "Prečo tvoje slovenské reklamy stoja veľa a nepredávajú?",
-    "niche": "Marketing",
-    "hook": "Sypeš peniaze do Meta Ads a výsledok nula? Tu je dôvod, prečo slovenské publikum tvoju reklamu preskakuje.",
+    "title": "Ako spraviť z reštaurácie Instagram fenomén",
+    "niche": "Gastro",
+    "hook": "Stačia 3 zmeny v tvojom IG profile a ľudia začnú prichádzať len z Instagramu.",
     "format": "Reel",
     "platform": "IG/TikTok",
-    "date": "2026-06-04",
-    "path": "ideas/Marketing/2026-06-04-preco-reklamy-nestacia.md",
-    "tags": ["marketing", "ads", "slovensko"]
+    "date": "2026-06-10",
+    "path": "ideas/Gastro/2026-06-10-ako-spraviť-z-reštaurácie-instagram-fenomén.md",
+    "tags": [
+      "gastro",
+      "content"
+    ]
   },
   {
-    "title": "AI v slovenskom copywritingu: Hrozba alebo pomocník?",
-    "niche": "Marketing",
-    "hook": "Nahradí nás AI v písaní textov? Skúsili sme nechať AI napísať kampaň v slovenčine a výsledok ťa prekvapí.",
-    "format": "Carousel",
-    "platform": "IG",
-    "date": "2026-06-04",
-    "path": "ideas/Marketing/2026-06-04-ai-v-copywritingu.md",
-    "tags": ["marketing", "AI", "copywriting"]
-  },
-  {
-    "title": "Ako vyzerá náš 14-dňový šprint",
-    "niche": "Marketing",
-    "hook": "Z nápadu na kampaň k prvým konverziám za 2 týždne. Pozri sa, ako funguje náš motor v Launchpad Marketingu.",
+    "title": "Koľko reálne zarábajú slovenské reštaurácie?",
+    "niche": "Gastro",
+    "hook": "Myslíš, že reštaurácie zarábajú milióny? Poď sa pozrieť na reálne čísla.",
     "format": "Reel",
     "platform": "IG/TikTok",
-    "date": "2026-06-04",
-    "path": "ideas/Marketing/2026-06-04-14-dnovy-sprint.md",
-    "tags": ["marketing", "process"]
+    "date": "2026-06-10",
+    "path": "ideas/Gastro/2026-06-10-koľko-reálne-zarábajú-slovenské-reštaurácie.md",
+    "tags": [
+      "gastro",
+      "content"
+    ]
   },
   {
-    "title": "Najväčšia chyba slovenských gastro profilov",
+    "title": "Najlepšie skryté gastro miesta na Slovensku",
     "niche": "Gastro",
-    "hook": "Tvoje jedlo vyzerá super, ale tvoj profil odrádza ľudí od návštevy. Oprav túto jednu vec v BIO.",
-    "format": "Stories",
-    "platform": "IG",
-    "date": "2026-06-04",
-    "path": "ideas/Gastro/2026-06-04-najvacsia-chyba-gastro-profilov.md",
-    "tags": ["gastro", "instagram"]
-  },
-  {
-    "title": "Koľko reálne stojí espresso v Bratislave?",
-    "niche": "Gastro",
-    "hook": "Myslíš si, že 3 eurá za kávu je veľa? Poď sa pozrieť, čo všetko platíš v jednej šálke.",
+    "hook": "Zabudni na známe reštaurácie. Tieto 3 miesta ťa dostanú kvalitou aj atmosférou.",
     "format": "Reel",
-    "platform": "IG",
-    "date": "2026-06-04",
-    "path": "ideas/Gastro/2026-06-04-espresso-marza-bratislava.md",
-    "tags": ["gastro", "kava", "bratislava"]
+    "platform": "IG/TikTok",
+    "date": "2026-06-10",
+    "path": "ideas/Gastro/2026-06-10-najlepšie-skryté-gastro-miesta-na-slovensku.md",
+    "tags": [
+      "gastro",
+      "content"
+    ]
   },
   {
-    "title": "Top 3 work-from-cafe v Košiciach",
-    "niche": "Gastro",
-    "hook": "Hľadáš kľud na prácu a dobrú kávu v KE? Tu sú tri miesta, kde ťa nikto nevyhodí ani po 3 hodinách s notebookom.",
-    "format": "TikTok",
-    "platform": "TikTok",
-    "date": "2026-06-04",
-    "path": "ideas/Gastro/2026-06-04-work-from-cafe-kosice.md",
-    "tags": ["gastro", "kosice"]
+    "title": "Meta Ads vs Google Ads na Slovensku",
+    "niche": "Marketing",
+    "hook": "Máš budget 500€ na reklamu. Kam to dáš? Rozbor čo funguje na slovenskom trhu.",
+    "format": "Reel",
+    "platform": "IG/TikTok",
+    "date": "2026-06-10",
+    "path": "ideas/Marketing/2026-06-10-meta-ads-vs-google-ads-na-slovensku.md",
+    "tags": [
+      "marketing",
+      "content"
+    ]
   },
   {
-    "title": "Chceš stavať brand, ale bojíš sa kamery?",
+    "title": "Prečo tvoje IG Stories nikto nepozerá?",
+    "niche": "Marketing",
+    "hook": "Píšeš Stories každý deň, ale engagement je nula? Tu je 5 dôvodov, prečo ťa ľudia preskakujú.",
+    "format": "Reel",
+    "platform": "IG/TikTok",
+    "date": "2026-06-10",
+    "path": "ideas/Marketing/2026-06-10-prečo-tvoje-ig-stories-nikto-nepozerá.md",
+    "tags": [
+      "marketing",
+      "content"
+    ]
+  },
+  {
+    "title": "SEO pre začiatočníkov: Prvých 30 dní",
+    "niche": "Marketing",
+    "hook": "SEO nie je veda. Tu je presný plán na prvých 30 dní, ktorý zvládne aj úplný začiatočník.",
+    "format": "Reel",
+    "platform": "IG/TikTok",
+    "date": "2026-06-10",
+    "path": "ideas/Marketing/2026-06-10-seo-pre-začiatočníkov-prvých-30-dní.md",
+    "tags": [
+      "marketing",
+      "content"
+    ]
+  },
+  {
+    "title": "3 nástroje, ktoré ti ušetria 10h týždenne",
     "niche": "Personal Brand",
-    "hook": "Najväčšia brzda tvojho biznisu je tvoj strach z Reels. Mám pre teba 3 tipy, ako začať aj bez profi techniky.",
+    "hook": "Strácaš čas tvorbou obsahu? Tieto 3 nástroje ti ho vrátia.",
     "format": "Reel",
     "platform": "IG/TikTok",
-    "date": "2026-06-04",
-    "path": "ideas/Personal Brand/2026-06-04-bojis-sa-kamery.md",
-    "tags": ["personal-brand", "kamera"]
+    "date": "2026-06-10",
+    "path": "ideas/Personal Brand/2026-06-10-3-nástroje-ktoré-ti-ušetria-10h-týždenne.md",
+    "tags": [
+      "personal-brand",
+      "content"
+    ]
   },
   {
-    "title": "LinkedIn na Slovensku: Koniec korporátnej nudy",
+    "title": "Ako rozprávať príbehy, ktoré zaujmú",
     "niche": "Personal Brand",
-    "hook": "Zabudni na škrobené statusy. Rok 2024 na slovenskom LinkedIne patrí autenticite. Tu je návod, ako na to.",
-    "format": "Carousel",
-    "platform": "IG",
-    "date": "2026-06-04",
-    "path": "ideas/Personal Brand/2026-06-04-linkedin-koniec-nudy.md",
-    "tags": ["personal-brand", "linkedin"]
+    "hook": "Storytelling je najsilnejší nástroj. Ale 90% ľudí ho robí zle.",
+    "format": "Reel",
+    "platform": "IG/TikTok",
+    "date": "2026-06-10",
+    "path": "ideas/Personal Brand/2026-06-10-ako-rozprávať-príbehy-ktoré-zaujmú.md",
+    "tags": [
+      "personal-brand",
+      "content"
+    ]
+  },
+  {
+    "title": "Prečo ťa na LinkedIne nikto nesleduje?",
+    "niche": "Personal Brand",
+    "hook": "Máš plný profil, ale nikto neinteraguje. Tu je dôvod.",
+    "format": "Reel",
+    "platform": "IG/TikTok",
+    "date": "2026-06-10",
+    "path": "ideas/Personal Brand/2026-06-10-prečo-ťa-na-linkedine-nikto-nesleduje.md",
+    "tags": [
+      "personal-brand",
+      "content"
+    ]
   }
 ]
