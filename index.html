@@ -350,14 +350,15 @@ function renderTrends(){
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
         ${tagHTML(t.niche)}<span class="trend-dot"></span>
       </div>
-      <h3>${t.title}</h3>
-      <p>${t.description}</p>
-      <div class="insight-box"><div class="ilbl">💡 Ako využiť</div><div class="itxt">${t.insight}</div></div>
-      <div class="card-meta"><span>${t.platform}</span><span>${t.source}</span></div>
-    </div>
-  `).join('');
-  if(!f.length) document.getElementById('trendGrid').innerHTML='<p style="color:rgba(255,255,255,.3);text-align:center;padding:32px;grid-column:1/-1">Žiadne trendy pre túto niku.</p>';
-}
+// 📥 Sem daj svoje .jpg obrázky — premenuj na 1.jpg, 2.jpg... a nahraj do /portfolio/
+const portfolioImages = [
+  {src:"portfolio/1.jpg", title:"Projekt 1"},
+  {src:"portfolio/2.jpg", title:"Projekt 2"},
+  {src:"portfolio/3.jpg", title:"Projekt 3"},
+  {src:"portfolio/4.jpg", title:"Projekt 4"},
+  {src:"portfolio/5.jpg", title:"Projekt 5"},
+  {src:"portfolio/6.jpg", title:"Projekt 6"},
+];
 
 function renderIdeas(){
   const f=ideaFilter==='all'?ideas:ideas.filter(i=>i.niche===ideaFilter);
