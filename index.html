@@ -6,497 +6,151 @@
 <title>Bc. Kevin Beke — Content Ideas Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:'Nunito','Inter',sans-serif;
-  background:linear-gradient(135deg,#FF6B35 0%,#1a1a2e 40%,#16213e 70%,#0f3460 100%);
-  color:#fff;
-  min-height:100vh;
-  line-height:1.6;
-}
+body{font-family:'Nunito',sans-serif;background:linear-gradient(135deg,#FF6B35 0%,#1a1a2e 40%,#16213e 70%,#0f3460 100%);color:#fff;min-height:100vh;overflow-x:hidden}
+.emoji-layer{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.emoji-layer span{position:absolute;font-size:clamp(1.5rem,4vw,4rem);animation:emojiFloat 20s ease-in-out infinite}
+@keyframes emojiFloat{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-15px) rotate(5deg)}50%{transform:translateY(-5px) rotate(-3deg)}75%{transform:translateY(-20px) rotate(4deg)}}
+.sidebar{position:fixed;left:0;top:0;bottom:0;z-index:900;width:64px;background:rgba(26,26,46,.85);backdrop-filter:blur(16px);border-right:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;align-items:center;padding:20px 0;gap:8px;transition:.3s}
+.sidebar:hover{width:200px}.sidebar:hover .nav-label{opacity:1}
+.sidebar-logo{width:40px;height:40px;border-radius:12px;background:#FF6B35;color:#fff;font-size:18px;font-weight:900;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.nav-item{display:flex;align-items:center;gap:12px;width:calc(100% - 16px);padding:10px 12px;border-radius:10px;border:none;background:transparent;color:rgba(255,255,255,.5);font-size:14px;font-weight:600;cursor:pointer;font-family:'Nunito',sans-serif;white-space:nowrap}
+.nav-item:hover{background:rgba(255,255,255,.08);color:#fff}
+.nav-item.active{background:rgba(255,107,53,.2);color:#FF6B35}
+.nav-icon{font-size:18px;width:24px;text-align:center}
+.nav-label{opacity:0;transition:.3s}
+.main-content{margin-left:64px;position:relative;z-index:1}
+.page{display:none}.page.active{display:block}
 .container{max-width:1100px;margin:0 auto;padding:0 20px}
-
-/* Floating Menu */
-.floating-menu{
-  position:fixed;top:20px;right:20px;z-index:1000;
-  transition:opacity .5s;
-}
-.floating-menu.hidden{opacity:0;pointer-events:none}
-.menu-btn{
-  width:52px;height:52px;border-radius:50%;
-  background:rgba(255,255,255,.12);
-  backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,.2);
-  color:#fff;font-size:22px;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:.3s;box-shadow:0 8px 32px rgba(0,0,0,.3);
-}
-.menu-btn:hover{background:rgba(255,255,255,.2);transform:scale(1.08)}
-.menu-dropdown{
-  position:absolute;top:62px;right:0;
-  background:rgba(26,26,46,.95);
-  backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:16px;padding:8px;
-  min-width:190px;box-shadow:0 8px 32px rgba(0,0,0,.4);
-  display:none;
-}
-.menu-dropdown.open{display:block}
-.menu-item{
-  display:block;width:100%;text-align:left;
-  padding:10px 16px;border-radius:10px;margin-bottom:2px;
-  border:none;background:transparent;
-  color:rgba(255,255,255,.5);font-size:14px;font-weight:600;
-  cursor:pointer;transition:.2s;font-family:'Nunito',sans-serif;
-}
-.menu-item:hover,.menu-item.active{background:rgba(255,255,255,.12);color:#fff}
-
-/* Hero */
-.hero{
-  min-height:100vh;display:flex;align-items:center;justify-content:center;
-  text-align:center;position:relative;overflow:hidden;
-}
-.hero-bg{position:absolute;inset:0;opacity:.08}
-.hero-bg div{
-  position:absolute;border-radius:50%;filter:blur(120px);
-  animation:float 6s ease-in-out infinite;
-}
-.hero-bg .b1{top:20%;left:15%;width:600px;height:600px;background:#FF6B35}
-.hero-bg .b2{bottom:15%;right:15%;width:500px;height:500px;background:#0f3460;animation-delay:-3s}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-30px)}}
-.hero h1{
-  font-size:clamp(2.5rem,7vw,5rem);font-weight:900;
-  margin-bottom:12px;color:#fff;
-  font-family:'Nunito',sans-serif;
-  letter-spacing:-1px;
-}
-.hero .sub{
-  color:rgba(255,255,255,.6);font-size:clamp(.9rem,2vw,1.2rem);
-  max-width:600px;margin:0 auto;font-weight:400;
-}
-.hero .divider{
-  width:60px;height:3px;background:#FF6B35;
-  margin:24px auto;border-radius:2px;
-}
-.hero .btns{margin-top:36px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.hero .btns a{
-  padding:14px 32px;border-radius:50px;
-  font-size:15px;font-weight:700;text-decoration:none;
-  transition:.3s;font-family:'Nunito',sans-serif;
-}
-.hero .btns .btn-primary{
-  background:#FF6B35;color:#fff;border:none;
-}
-.hero .btns .btn-primary:hover{background:#e55a2b;transform:translateY(-2px)}
-.hero .btns .btn-outline{
-  background:rgba(255,255,255,.08);backdrop-filter:blur(8px);
-  border:1px solid rgba(255,255,255,.2);color:#fff;
-}
-.hero .btns .btn-outline:hover{background:rgba(255,255,255,.15);transform:translateY(-2px)}
-.hero .scroll-hint{
-  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
-  color:rgba(255,255,255,.3);font-size:14px;
-  animation:bounce 2s infinite;font-weight:300;
-}
-@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
-
-/* Sections */
-.section{padding:5rem 0}
-.section-label{
-  color:#FF6B35;text-transform:uppercase;letter-spacing:.15em;
-  font-size:12px;font-weight:700;text-align:center;margin-bottom:8px;
-}
-.section-title{
-  font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;
-  text-align:center;margin-bottom:32px;color:#fff;
-  font-family:'Nunito',sans-serif;
-}
-
-/* Filters */
-.filters{display:flex;gap:8px;justify-content:center;margin-bottom:32px;flex-wrap:wrap}
-.filter-btn{
-  padding:8px 20px;border-radius:50px;
-  font-size:13px;font-weight:600;font-family:'Nunito',sans-serif;
-  border:1px solid rgba(255,255,255,.12);
-  background:transparent;color:rgba(255,255,255,.5);
-  cursor:pointer;transition:.2s;
-}
-.filter-btn:hover{border-color:rgba(255,255,255,.3);color:#fff}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.quote-carousel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:0}
+.quote-slide{position:absolute;max-width:700px;padding:40px;text-align:center;opacity:0;transition:opacity 1.5s}
+.quote-slide.active{opacity:1}
+.quote-slide blockquote{font-size:clamp(1rem,2.5vw,1.6rem);font-weight:300;color:rgba(255,255,255,.06);font-style:italic}
+.hero-content{position:relative;z-index:2}
+.hero-label{color:#FF6B35;text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:700;margin-bottom:16px}
+.hero h1{font-size:clamp(2.5rem,7vw,5rem);font-weight:900;color:#fff}
+.hero-divider{width:60px;height:3px;background:#FF6B35;margin:20px auto}
+.hero-sub{color:rgba(255,255,255,.6);font-size:clamp(.9rem,2vw,1.15rem);max-width:600px;margin:0 auto}
+.hero-btns{margin-top:36px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero-btns a{padding:14px 32px;border-radius:50px;font-size:15px;font-weight:700;text-decoration:none}
+.btn-primary{background:#FF6B35;color:#fff}.btn-ghost{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff}
+.section{padding:4rem 0}.section-label{color:#FF6B35;font-size:12px;font-weight:700;text-align:center;margin-bottom:6px;text-transform:uppercase;letter-spacing:.15em}
+.section-title{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;text-align:center;margin-bottom:28px;color:#fff}
+.filters{display:flex;gap:8px;justify-content:center;margin-bottom:28px;flex-wrap:wrap}
+.filter-btn{padding:7px 18px;border-radius:50px;font-size:13px;font-weight:700;border:1px solid rgba(255,255,255,.12);background:transparent;color:rgba(255,255,255,.5);cursor:pointer;font-family:'Nunito',sans-serif}
 .filter-btn.active{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.25)}
-
-/* Grid */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
-
-/* Cards */
-.card{
-  background:rgba(255,255,255,.06);backdrop-filter:blur(4px);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:16px;padding:1.5rem;
-  transition:all .3s;cursor:pointer;
-  position:relative;overflow:hidden;
-}
-.card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,transparent,#FF6B35,transparent);
-  opacity:0;transition:.3s;
-}
-.card:hover::before{opacity:1}
-.card:hover{
-  transform:translateY(-4px);
-  background:rgba(255,255,255,.09);
-  border-color:rgba(255,255,255,.15);
-  box-shadow:0 8px 32px rgba(0,0,0,.2);
-}
-.card-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
-.tag{font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;font-family:'Nunito',sans-serif}
-.tag-mkt{background:rgba(255,107,53,.2);color:#FF6B35}
-.tag-gst{background:rgba(255,193,7,.15);color:#FFC107}
-.tag-brd{background:rgba(147,51,234,.2);color:#c084fc}
+.card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:1.5rem;cursor:pointer;transition:.3s}
+.card:hover{transform:translateY(-3px);background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.15)}
+.tag{font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px}
+.tag-mkt{background:rgba(255,107,53,.2);color:#FF6B35}.tag-gst{background:rgba(255,193,7,.15);color:#FFC107}.tag-brd{background:rgba(147,51,234,.2);color:#c084fc}
 .tag-sm{font-size:11px;color:rgba(255,255,255,.4);background:rgba(255,255,255,.06);padding:4px 10px;border-radius:8px}
-.trend-dot{width:10px;height:10px;border-radius:50%;background:#FF6B35;box-shadow:0 0 12px rgba(255,107,53,.4)}
-.card h3{color:#fff;font-size:16px;font-weight:700;margin-bottom:8px;font-family:'Nunito',sans-serif}
-.card p{color:rgba(255,255,255,.55);font-size:13px;line-height:1.6;margin-bottom:12px}
-.insight-box{background:rgba(255,107,53,.08);border-radius:10px;padding:14px;margin-bottom:12px;border-left:3px solid #FF6B35}
-.insight-box .ilbl{font-size:11px;font-weight:700;color:#FF6B35;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em}
-.insight-box .itxt{color:rgba(255,255,255,.6);font-size:12px;line-height:1.5}
-.card-meta{display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.3)}
-.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.06)}
-
-/* Detail Modal */
-.modal-overlay{
-  position:fixed;inset:0;z-index:2000;
-  background:rgba(0,0,0,.7);backdrop-filter:blur(8px);
-  display:none;justify-content:center;align-items:center;
-  padding:20px;
-}
-.modal-overlay.open{display:flex}
-.modal{
-  background:linear-gradient(135deg,#1a1a2e,#16213e);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:20px;padding:2rem;
-  max-width:700px;width:100%;max-height:85vh;overflow-y:auto;
-  position:relative;animation:modalIn .3s ease-out;
-}
-@keyframes modalIn{0%{opacity:0;transform:scale(.95) translateY(10px)}100%{opacity:1;transform:scale(1) translateY(0)}}
-.modal-close{
-  position:absolute;top:16px;right:16px;
-  width:36px;height:36px;border-radius:50%;
-  background:rgba(255,255,255,.08);border:none;
-  color:#fff;font-size:18px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:.2s;
-}
-.modal-close:hover{background:rgba(255,255,255,.15)}
-.modal h2{font-size:22px;font-weight:800;margin-bottom:16px;color:#fff;font-family:'Nunito',sans-serif}
-.modal .hook{color:rgba(255,255,255,.5);font-size:14px;margin-bottom:24px;line-height:1.6}
-.modal-section{margin-bottom:20px}
-.modal-label{font-size:11px;font-weight:700;color:#FF6B35;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
-.modal-text{color:rgba(255,255,255,.65);font-size:13px;line-height:1.6;white-space:pre-wrap}
-.modal-btn{
-  display:inline-block;padding:12px 28px;
-  background:#FF6B35;color:#fff;border:none;border-radius:50px;
-  font-size:14px;font-weight:700;font-family:'Nunito',sans-serif;
-  cursor:pointer;transition:.3s;margin-top:8px;text-decoration:none;
-}
-.modal-btn:hover{background:#e55a2b;transform:translateY(-1px)}
-
-/* Animations */
-.appear{opacity:0;transform:translateY(40px);transition:all .7s cubic-bezier(.16,1,.3,1)}
-.appear.show{opacity:1;transform:translateY(0)}
-
-/* No contact section - removed */
-
-/* Print styles for PDF */
-@media print{
-  body{background:#fff!important;color:#333!important}
-  .floating-menu,.hero .btns,.hero .scroll-hint,.filters,.filter-btn,.card-footer,.modal-overlay{display:none!important}
-  .card{break-inside:avoid;background:#fff!important;border:1px solid #ddd!important;color:#333!important}
-  .card h3{color:#1a1a2e!important}
-  .card p{color:#555!important}
-  .tag-mkt{background:#f5f5f5!important;color:#FF6B35!important}
-  .tag-gst{background:#f5f5f5!important;color:#FFC107!important}
-  .tag-brd{background:#f5f5f5!important;color:#c084fc!important}
-  .insight-box{border-left:3px solid #FF6B35!important;background:#fafafa!important}
-  .insight-box .ilbl{color:#FF6B35!important}
-  .insight-box .itxt{color:#555!important}
-  .section{padding:1rem 0!important}
-  .hero{min-height:auto!important;padding:3rem 0!important}
-  .hero h1{color:#1a1a2e!important}
-  .hero .sub{color:#555!important}
-  .grid{grid-template-columns:1fr 1fr!important;gap:12px!important}
-  body *{visibility:visible!important}
-}
-
-/* Scrollbar */
-.modal::-webkit-scrollbar{width:6px}
-.modal::-webkit-scrollbar-track{background:transparent}
-.modal::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:3px}
+.card h3{color:#fff;font-size:15px;font-weight:700;margin-bottom:6px}
+.card p{color:rgba(255,255,255,.5);font-size:13px;margin-bottom:10px}
+.card-footer{display:flex;justify-content:space-between;padding-top:10px;border-top:1px solid rgba(255,255,255,.06)}
+.card-cta{font-size:12px;color:#FF6B35;font-weight:700}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.portfolio-item{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:1;cursor:pointer;border:1px solid rgba(255,255,255,.08);transition:.3s}
+.portfolio-item:hover{transform:scale(1.03);border-color:rgba(255,107,53,.3)}
+.portfolio-item img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.portfolio-item:hover img{transform:scale(1.08)}
+.portfolio-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.7),transparent 60%);display:flex;align-items:flex-end;padding:16px;opacity:0;transition:.3s}
+.portfolio-item:hover .portfolio-overlay{opacity:1}
+.portfolio-overlay span{color:#fff;font-size:13px;font-weight:700}
+.lightbox{position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.9);display:none;justify-content:center;align-items:center;padding:40px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:12px}
+.lightbox-close{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.1);border:none;color:#fff;font-size:22px;cursor:pointer}
+.lightbox-nav{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:8px}
+.lightbox-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);border:none;cursor:pointer}.lightbox-dot.active{background:#FF6B35}
+.modal-overlay{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.7);display:none;justify-content:center;align-items:center;padding:20px}
+.modal-overlay.open{display:flex}.modal{background:linear-gradient(135deg,#1a1a2e,#16213e);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:2rem;max-width:700px;width:100%;max-height:85vh;overflow-y:auto;position:relative}
+.modal-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);border:none;color:#fff;font-size:18px;cursor:pointer}
+.modal h2{font-size:20px;font-weight:800;margin-bottom:12px;color:#fff}.modal .hook-text{color:rgba(255,255,255,.5);font-size:14px;margin-bottom:20px}
+.modal-section{margin-bottom:18px}.modal-label{font-size:11px;font-weight:700;color:#FF6B35;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em}
+.modal-text{color:rgba(255,255,255,.65);font-size:13px;white-space:pre-wrap}.modal-btn{display:inline-block;padding:12px 28px;background:#FF6B35;color:#fff;border:none;border-radius:50px;font-size:14px;font-weight:700;cursor:pointer;margin-top:6px}
+@media print{body{background:#fff!important;color:#333!important}.sidebar,.emoji-layer,.modal-overlay,.lightbox{display:none!important}.main-content{margin-left:0!important}.page.active{display:block!important}.card{break-inside:avoid!important;background:#fff!important;border:1px solid #ddd!important}.card h3{color:#1a1a2e!important}.tag-mkt{background:#f5f5f5!important;color:#FF6B35!important}}
 </style>
 </head>
 <body>
-
-<!-- Floating Menu -->
-<div class="floating-menu hidden" id="floatingMenu">
-  <button class="menu-btn" onclick="toggleMenu()">☰</button>
-  <div class="menu-dropdown" id="menuDropdown">
-    <button class="menu-item active" onclick="scrollTo('hero')">🏠 Domov</button>
-    <button class="menu-item" onclick="scrollTo('trends')">🔥 Trendy</button>
-    <button class="menu-item" onclick="scrollTo('ideas')">📱 Nápady</button>
-  </div>
-</div>
-
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-bg"><div class="b1"></div><div class="b2"></div></div>
-  <div>
-    <p style="color:#FF6B35;text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:700;margin-bottom:16px">— Content Ideas Hub —</p>
-    <h1>Bc. Kevin Beke</h1>
-    <div class="divider"></div>
-    <p class="sub">Marketingová stratégia • Content Creation • Osobný brand • Slovensko</p>
-    <div class="btns">
-      <a href="#trends" class="btn-primary">🔥 Preskúmať trendy</a>
-      <a href="#ideas" class="btn-outline">📱 Zobraziť nápady</a>
+<div class="emoji-layer" id="emojiLayer"></div>
+<nav class="sidebar">
+  <div class="sidebar-logo">K</div>
+  <button class="nav-item active" data-route="domov" onclick="navigate('domov')"><span class="nav-icon">🏠</span><span class="nav-label">Domov</span></button>
+  <button class="nav-item" data-route="napady" onclick="navigate('napady')"><span class="nav-icon">📱</span><span class="nav-label">Nápady</span></button>
+  <button class="nav-item" data-route="trendy" onclick="navigate('trendy')"><span class="nav-icon">🔥</span><span class="nav-label">Trendy</span></button>
+  <button class="nav-item" data-route="portfolio" onclick="navigate('portfolio')"><span class="nav-icon">🎨</span><span class="nav-label">Portfólio</span></button>
+</nav>
+<main class="main-content">
+<div class="page active" id="page-domov">
+  <section class="hero">
+    <div class="quote-carousel" id="quoteCarousel"></div>
+    <div class="hero-content">
+      <p class="hero-label">— Content Ideas Hub —</p>
+      <h1>Bc. Kevin Beke</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-sub">Marketingová stratégia • Content Creation • Osobný brand • Slovensko</p>
+      <div class="hero-btns">
+        <a href="#" onclick="navigate('napady');return false" class="btn-primary">📱 Preskúmať nápady</a>
+        <a href="#" onclick="navigate('portfolio');return false" class="btn-ghost">🎨 Zobraziť portfólio</a>
+      </div>
     </div>
-  </div>
-  <div class="scroll-hint">Scroll pre viac ↓</div>
-</section>
-
-<!-- TRENDS -->
-<section class="section" id="trends">
-  <div class="container appear">
-    <div class="section-label">Trending</div>
-    <h2 class="section-title">Aktuálne trendy</h2>
-    <div class="filters" id="trendFilters"></div>
-    <div class="grid" id="trendGrid"></div>
-  </div>
-</section>
-
-<!-- IDEAS -->
-<section class="section" id="ideas">
-  <div class="container appear">
+  </section>
+</div>
+<div class="page" id="page-napady">
+  <div class="section"><div class="container">
     <div class="section-label">Content</div>
     <h2 class="section-title">Denné nápady na obsah</h2>
     <div class="filters" id="ideaFilters"></div>
     <div class="grid" id="ideaGrid"></div>
-  </div>
-</section>
-
-<!-- Detail Modal -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-  <div class="modal" id="modalContent">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div id="modalBody"></div>
-  </div>
+  </div></div>
 </div>
+<div class="page" id="page-trendy">
+  <div class="section"><div class="container">
+    <div class="section-label">Trending</div>
+    <h2 class="section-title">Aktuálne trendy</h2>
+    <div class="filters" id="trendFilters"></div>
+    <div class="grid" id="trendGrid"></div>
+  </div></div>
+</div>
+<div class="page" id="page-portfolio">
+  <div class="section"><div class="container">
+    <div class="section-label">Práce</div>
+    <h2 class="section-title">🎨 Portfólio</h2>
+    <div class="portfolio-grid" id="portfolioGrid"></div>
+  </div></div>
+</div>
+</main>
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)"><div class="modal"><button class="modal-close" onclick="closeModal()">✕</button><div id="modalBody"></div></div></div>
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)"><button class="lightbox-close" onclick="closeLightbox()">✕</button><img id="lightboxImg" src=""><div class="lightbox-nav" id="lightboxNav"></div></div>
 
 <script>
+const QUOTES=["Content is fire, social media is gasoline.","Marketing is telling stories people actually want to hear.","Brand is what people say about you when you leave the room.","The best marketing doesn't feel like marketing.","Consistency compounds. Virality is a lottery.","Your brand is a story unfolding across all customer touch points.","Don't find customers for your product, find products for your customers.","Marketing is no longer about the stuff you make, but the stories you tell.","Content builds relationships. Relationships are built on trust.","The best time to start building your brand was yesterday."];
 const TAG_CLS={Marketing:'tag-mkt',Gastro:'tag-gst','Personal Brand':'tag-brd'};
-let ideas=[], trends=[], ideaFilter='all', trendFilter='all';
-
-function loadData(){
-  Promise.all([
-    fetch('./ideas-list.json').then(r=>r.json()).catch(()=>[]),
-    fetch('./trends/trends.json').then(r=>r.json()).catch(()=>[])
-  ]).then(([id,tr])=>{
-    ideas=id; trends=tr;
-    renderAll();
-    const obs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('show')}),{threshold:.1});
-    document.querySelectorAll('.appear').forEach(el=>obs.observe(el));
-    // Menu appears after scroll
-    window.addEventListener('scroll',()=>{
-      document.getElementById('floatingMenu').classList.toggle('hidden',window.scrollY<200);
-      // Track active section
-      const sections=['hero','trends','ideas'];
-      document.querySelectorAll('.menu-item').forEach(m=>m.classList.remove('active'));
-      for(const id of sections){
-        const el=document.getElementById(id);
-        if(el&&el.getBoundingClientRect().top<200){
-          const idx=sections.indexOf(id);
-          document.querySelectorAll('.menu-item')[idx].classList.add('active');
-          break;
-        }
-      }
-    });
-  });
-}
-
-function renderAll(){renderFilters();renderTrends();renderIdeas()}
-
-function tagHTML(niche){
-  const n=niche==='Personal Brand'?'🧑‍🎤 Brand':niche==='Marketing'?'📊 Marketing':'🍽️ Gastro';
-  return `<span class="tag ${TAG_CLS[niche]}">${n}</span>`;
-}
-
-function renderFilters(){
-  const nics=['all','Marketing','Gastro','Personal Brand'];
-  const lbs={all:'Všetky',Marketing:'📊 Marketing',Gastro:'🍽️ Gastro','Personal Brand':'🧑‍🎤 Osobný brand'};
-  document.getElementById('trendFilters').innerHTML=nics.map(n=>`<button class="filter-btn ${trendFilter===n?'active':''}" onclick="setFilter('trend','${n}')">${lbs[n]}</button>`).join('');
-  document.getElementById('ideaFilters').innerHTML=nics.map(n=>`<button class="filter-btn ${ideaFilter===n?'active':''}" onclick="setFilter('idea','${n}')">${lbs[n]}</button>`).join('');
-}
-
-function setFilter(type,val){
-  if(type==='trend'){trendFilter=val;renderFilters();renderTrends()}
-  else{ideaFilter=val;renderFilters();renderIdeas()}
-}
-
-function renderTrends(){
-  const f=trendFilter==='all'?trends:trends.filter(t=>t.niche===trendFilter);
-  document.getElementById('trendGrid').innerHTML=f.map((t,i)=>`
-    <div class="card" onclick="openTrendDetail(${i})">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
-        ${tagHTML(t.niche)}<span class="trend-dot"></span>
-      </div>
-    </div>
-  `).join('');
-}
-
-// Portfolio images — nahraj svoje .jpg do /portfolio/ (1.jpg, 2.jpg...)
-const portfolioImages = [
-  {src:"portfolio/1.jpg", title:"Projekt 1"},
-  {src:"portfolio/2.jpg", title:"Projekt 2"},
-  {src:"portfolio/3.jpg", title:"Projekt 3"},
-  {src:"portfolio/4.jpg", title:"Projekt 4"},
-  {src:"portfolio/5.jpg", title:"Projekt 5"},
-  {src:"portfolio/6.jpg", title:"Projekt 6"},
-];
-
-function renderIdeas(){
-  const f=ideaFilter==='all'?ideas:ideas.filter(i=>i.niche===ideaFilter);
-  document.getElementById('ideaGrid').innerHTML=f.map((i,idx)=>`
-    <div class="card" onclick="openIdeaDetail(${idx})">
-      <div class="card-tags">
-        ${tagHTML(i.niche)}
-        <span class="tag-sm">${i.format||'Reel'}</span>
-        <span class="tag-sm">${i.platform||'IG/TikTok'}</span>
-        <span style="margin-left:auto;font-size:11px;color:rgba(255,255,255,.3)">${i.date||''}</span>
-      </div>
-      <h3>${i.title}</h3>
-      <p>${i.hook}</p>
-      <div class="card-footer">
-        <span style="font-size:12px;color:#FF6B35;font-weight:600">Klikni pre detail →</span>
-      </div>
-    </div>
-  `).join('');
-  if(!f.length) document.getElementById('ideaGrid').innerHTML='<p style="color:rgba(255,255,255,.3);text-align:center;padding:32px;grid-column:1/-1">Žiadne nápady pre túto niku.</p>';
-}
-
-function openTrendDetail(idx){
-  const t=trendFilter==='all'?trends[idx]:trends.filter(i=>i.niche===trendFilter)[idx];
-  if(!t)return;
-  document.getElementById('modalBody').innerHTML=`
-    <div style="display:flex;gap:8px;align-items:center;margin-bottom:16px">${tagHTML(t.niche)}<span class="trend-dot"></span></div>
-    <h2>${t.title}</h2>
-    <div class="hook">${t.description}</div>
-    <div class="modal-section">
-      <div class="modal-label">💡 Ako využiť</div>
-      <div class="modal-text">${t.insight}</div>
-    </div>
-    <div class="modal-section">
-      <div class="modal-label">Platforma</div>
-      <div class="modal-text">${t.platform}</div>
-    </div>
-    <div class="modal-section">
-      <div class="modal-label">Zdroj</div>
-      <div class="modal-text">${t.source}</div>
-    </div>
-  `;
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-
-function openIdeaDetail(idx){
-  const i=ideaFilter==='all'?ideas[idx]:ideas.filter(n=>n.niche===ideaFilter)[idx];
-  if(!i)return;
-  let details='';
-  if(i.target_audience) details+=`<div class="modal-section"><div class="modal-label">🎯 Cieľová skupina</div><div class="modal-text">${i.target_audience}</div></div>`;
-  if(i.tone_of_voice) details+=`<div class="modal-section"><div class="modal-label">🎤 Tone of Voice</div><div class="modal-text">${i.tone_of_voice}</div></div>`;
-  if(i.length) details+=`<div class="modal-section"><div class="modal-label">⏱ Dĺžka</div><div class="modal-text">${i.length}</div></div>`;
-  
-  document.getElementById('modalBody').innerHTML=`
-    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px">
-      ${tagHTML(i.niche)}
-      <span class="tag-sm">${i.format||'Reel'}</span>
-      <span class="tag-sm">${i.platform||'IG/TikTok'}</span>
-    </div>
-    <h2>${i.title}</h2>
-    <div class="hook">${i.hook}</div>
-    ${details}
-    <button class="modal-btn" onclick="downloadPDF('${i.title}')">⬇ Stiahnuť ako PDF</button>
-  `;
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-
-function closeModal(e){
-  if(e&&e.target!==document.getElementById('modalOverlay')) return;
-  document.getElementById('modalOverlay').classList.remove('open');
-  document.getElementById('modalBody').innerHTML='';
-  document.body.style.overflow='';
-}
-
-function toggleMenu(){
-  document.getElementById('menuDropdown').classList.toggle('open');
-}
-
-function scrollTo(id){
-  document.getElementById('menuDropdown').classList.remove('open');
-  document.getElementById(id)?.scrollIntoView({behavior:'smooth'});
-}
-
-// PDF Export
-function downloadPDF(title){
-  const modal=document.getElementById('modalContent');
-  const body=document.getElementById('modalBody');
-  
-  // Build print-friendly content
-  const printContent=body.cloneNode(true);
-  // Remove the PDF button from print content
-  const btn=printContent.querySelector('.modal-btn');
-  if(btn) btn.remove();
-  
-  const printWin=window.open('','_blank');
-  printWin.document.write(`<!DOCTYPE html><html><head>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-      *{margin:0;padding:0;box-sizing:border-box}
-      body{font-family:'Nunito',sans-serif;color:#333;padding:40px;line-height:1.6}
-      h1{font-size:28px;font-weight:800;margin-bottom:8px;color:#1a1a2e}
-      .hook{color:#666;font-size:14px;margin-bottom:24px}
-      .section{margin-bottom:20px}
-      .label{font-size:11px;font-weight:700;color:#FF6B35;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
-      .text{color:#555;font-size:13px;line-height:1.6}
-      .tags{display:flex;gap:8px;margin-bottom:16px}
-      .tag{font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;background:#f5f5f5;color:#333}
-      .footer{margin-top:40px;padding-top:16px;border-top:1px solid #ddd;font-size:11px;color:#999;text-align:center}
-      hr{border:none;border-top:1px solid #eee;margin:20px 0}
-      @page{margin:20mm}
-    </style>
-  </head><body>
-    <div class="tags">${printContent.querySelector('[style*="flex"]')?.innerHTML||''}</div>
-    <h1>${printContent.querySelector('h2')?.innerText||title}</h1>
-    <div class="hook">${printContent.querySelector('.hook')?.innerHTML||''}</div>
-    ${Array.from(printContent.querySelectorAll('.modal-section')).map(s=>`
-      <div class="section">
-        <div class="label">${s.querySelector('.modal-label')?.innerHTML||''}</div>
-        <div class="text">${s.querySelector('.modal-text')?.innerHTML||''}</div>
-      </div>
-    `).join('')}
-    <hr>
-    <div class="footer">Generated by Launchpad Marketing • Bc. Kevin Beke</div>
-  </body></html>`);
-  printWin.document.close();
-  printWin.focus();
-  printWin.print();
-}
-
-// ESC to close modal
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-
-loadData();
+const NIC_KEYS=['all','Marketing','Gastro','Personal Brand'];
+const NIC_MAP={all:'Všetky',Marketing:'📊 Marketing',Gastro:'🍽️ Gastro','Personal Brand':'🧑‍🎤 Osobný brand'};
+let ideas=[],trends=[],ideaFilter='all',trendFilter='all',quoteIndex=0,lbIdx=0,qi=null;
+const PI=[{src:'portfolio/1.jpg',title:'Projekt 1'},{src:'portfolio/2.jpg',title:'Projekt 2'},{src:'portfolio/3.jpg',title:'Projekt 3'},{src:'portfolio/4.jpg',title:'Projekt 4'},{src:'portfolio/5.jpg',title:'Projekt 5'},{src:'portfolio/6.jpg',title:'Projekt 6'}];
+function tg(n){const m=n==='Personal Brand'?'🧑‍🎤 Brand':n==='Marketing'?'📊 Marketing':'🍽️ Gastro';return '<span class="tag '+TAG_CLS[n]+'">'+m+'</span>'}
+function initE(){const e='🔥📱🎯💡🚀📊🍽️🧑‍🎤💪✨🎬📸💎🌟⚡🎨📈👀💼🤝',l=document.getElementById('emojiLayer');for(let i=0;i<25;i++){const s=document.createElement('span');s.textContent=e[i%e.length];s.style.cssText='left:'+(Math.random()*90)+'%;top:'+(Math.random()*90)+'%;opacity:'+(Math.random()*.06+.02)+';transform:rotate('+(Math.random()*40-20)+'deg) scale('+(Math.random()*.6+.4)+');animation-delay:'+(Math.random()*15)+'s;animation-duration:'+(15+Math.random()*15)+'s';l.appendChild(s)}}
+function initQ(){const c=document.getElementById('quoteCarousel');QUOTES.forEach((q,i)=>{const d=document.createElement('div');d.className='quote-slide'+(i===0?' active':'');d.innerHTML='<blockquote>'+q+'</blockquote>';c.appendChild(d)});qi=setInterval(()=>{document.querySelectorAll('.quote-slide').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.quote-slide')[quoteIndex=(quoteIndex+1)%QUOTES.length].classList.add('active')},3600000)}
+function navigate(r){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('page-'+r).classList.add('active');document.querySelectorAll('.nav-item').forEach(n=>n.classList.toggle('active',n.dataset.route===r));window.location.hash=r;window.scrollTo(0,0);if(r==='portfolio')renderP()}
+function loadD(){Promise.all([fetch('./ideas-list.json').then(r=>r.json()).catch(()=>[]),fetch('./trends/trends.json').then(r=>r.json()).catch(()=>[])]).then(([id,tr])=>{ideas=id;trends=tr;rf();rt();ri();const h=window.location.hash.slice(1)||'domov';if(NIC_KEYS.slice(1).concat('domov','portfolio').includes(h))navigate(h)})}
+function sf(t,v){if(t==='t'){trendFilter=v;rf();rt()}else{ideaFilter=v;rf();ri()}}
+function rf(){document.getElementById('trendFilters').innerHTML=NIC_KEYS.map(n=>'<button class="filter-btn '+(trendFilter===n?'active':'')+'" onclick="sf(\'t\',\''+n+'\')">'+NIC_MAP[n]+'</button>').join('');document.getElementById('ideaFilters').innerHTML=NIC_KEYS.map(n=>'<button class="filter-btn '+(ideaFilter===n?'active':'')+'" onclick="sf(\'i\',\''+n+'\')">'+NIC_MAP[n]+'</button>').join('')}
+function rt(){const f=trendFilter==='all'?trends:trends.filter(t=>t.niche===trendFilter);const g=document.getElementById('trendGrid');if(!f.length){g.innerHTML='<p style="color:rgba(255,255,255,.3);text-align:center;padding:48px">Žiadne trendy.</p>';return}g.innerHTML=f.map((t,i)=>'<div class="card" onclick="oTD('+i+')"><div style="display:flex;justify-content:space-between;margin-bottom:10px">'+tg(t.niche)+'<span style="width:10px;height:10px;border-radius:50%;background:#FF6B35"></span></div><h3>'+t.title+'</h3><p>'+(t.description||'').slice(0,120)+'...</p><div class="card-footer"><span style="font-size:11px;color:rgba(255,255,255,.3)">'+(t.platform||'')+'</span><span class="card-cta">Detail →</span></div></div>').join('')}
+function ri(){const f=ideaFilter==='all'?ideas:ideas.filter(i=>i.niche===ideaFilter);const g=document.getElementById('ideaGrid');if(!f.length){g.innerHTML='<p style="color:rgba(255,255,255,.3);text-align:center;padding:48px">Žiadne nápady.</p>';return}g.innerHTML=f.map((i,idx)=>'<div class="card" onclick="oID('+idx+')"><div class="card-tags">'+tg(i.niche)+'<span class="tag-sm">'+(i.format||'Reel')+'</span><span class="tag-sm">'+(i.platform||'IG/TikTok')+'</span><span style="margin-left:auto;font-size:11px;color:rgba(255,255,255,.3)">'+(i.date||'')+'</span></div><h3>'+i.title+'</h3><p>'+(i.hook||'').slice(0,110)+'...</p><div class="card-footer"><span style="font-size:11px;color:rgba(255,255,255,.3)">'+(i.length||i.duration||'~60s')+'</span><span class="card-cta">Detail →</span></div></div>').join('')}
+function oTD(idx){const t=trendFilter==='all'?trends[idx]:trends.filter(i=>i.niche===trendFilter)[idx];if(!t)return;document.getElementById('modalBody').innerHTML='<div style="display:flex;gap:8px;margin-bottom:12px">'+tg(t.niche)+'</div><h2>'+t.title+'</h2><div class="hook-text">'+t.description+'</div><div class="modal-section"><div class="modal-label">💡 Ako využiť</div><div class="modal-text">'+t.insight+'</div></div><div class="modal-section"><div class="modal-label">Platforma</div><div class="modal-text">'+t.platform+'</div></div><button class="modal-btn" onclick="window.print()">⬇ PDF</button>';document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden'}
+function oID(idx){const i=ideaFilter==='all'?ideas[idx]:ideas.filter(n=>n.niche===ideaFilter)[idx];if(!i)return;document.getElementById('modalBody').innerHTML='<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">'+tg(i.niche)+'<span class="tag-sm">'+(i.format||'Reel')+'</span><span class="tag-sm">'+(i.platform||'IG/TikTok')+'</span></div><h2>'+i.title+'</h2><div class="hook-text">'+(i.hook||'—')+'</div><div class="modal-section"><div class="modal-label">⏱ Dĺžka</div><div class="modal-text">'+(i.length||i.duration||'60s')+'</div></div>'+(i.target_audience?'<div class="modal-section"><div class="modal-label">🎯 Cieľová skupina</div><div class="modal-text">'+i.target_audience+'</div></div>':'')+'<button class="modal-btn" onclick="window.print()">⬇ PDF</button>';document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(e){if(e&&e.target!==document.getElementById('modalOverlay'))return;document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeLB()}})
+function renderP(){document.getElementById('portfolioGrid').innerHTML=PI.map((img,i)=>'<div class="portfolio-item" onclick="openLB('+i+')"><img src="'+img.src+'" alt="'+img.title+'" loading="lazy"><div class="portfolio-overlay"><span>'+img.title+'</span></div></div>').join('')}
+function openLB(idx){lbIdx=idx;document.getElementById('lightbox').classList.add('open');document.getElementById('lightboxImg').src=PI[idx].src;document.getElementById('lightboxNav').innerHTML=PI.map((_,i)=>'<button class="lightbox-dot '+(i===idx?'active':'')+'" onclick="lbIdx='+i+';document.getElementById(\'lightboxImg\').src=PI['+i+'].src;document.querySelectorAll(\'.lightbox-dot\').forEach((d,j)=>d.classList.toggle(\'active\',j==='+i+'))"></button>').join('');document.body.style.overflow='hidden';document.onkeydown=e=>{if(e.key==='ArrowRight'){const n=(lbIdx+1)%PI.length;openLB(n)}else if(e.key==='ArrowLeft'){const n=(lbIdx-1+PI.length)%PI.length;openLB(n)}else if(e.key==='Escape')closeLB()}}
+function closeLB(e){if(e&&e.target!==document.getElementById('lightbox'))return;document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';document.onkeydown=null}
+initE();initQ();loadD();window.addEventListener('beforeunload',()=>{if(qi)clearInterval(qi)});
 </script>
 </body>
 </html>

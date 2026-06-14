@@ -1,30 +1,42 @@
-name: Denné generovanie nápadov 🇸🇰
+name: Generovanie nápadov (každé 2h) 🇸🇰
 
 on:
   schedule:
-    - cron: '0 6 * * *'   # každý deň o 6:00 UTC
-  workflow_dispatch:       # manuálne spustenie
+    - cron: '0 */2 * * *'   # každé 2 hodiny
+  workflow_dispatch:
 
 jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Generate daily ideas
-        run: node .github/scripts/generate-ideas.js
-
-      - name: Update ideas-list.json
-        run: node .github/scripts/build-json.js
+      - name: Generate fresh ideas
+        run: |
+          node -e "
+          const fs=require('fs');
+          const today=new Date().toISOString().split('T')[0];
+          const niches={Marketing:['Prečo tvoje IG Stories nikto nepozerá?|Píšeš Stories každý deň ale nikto nereaguje? Tu je prečo.','SEO pre začiatočníkov: Prvých 30 dní|SEO nie je veda. Tu je presný plán.','Meta Ads vs Google Ads na SK|Kam dať budget 500€? Rozbor.'],Gastro:['Najlepšie skryté gastro miesta|3 miesta o ktorých nikto nehovorí.','Ako spraviť z reštaurácie IG fenomén|3 zmeny v profile = viac zákazníkov.','Behind-the-kitchen video formáty|ASMR príprava jedla.'],'Personal Brand':['Prečo ťa na LinkedIne nikto nesleduje?|Tu je dôvod a riešenie.','3 nástroje čo ušetria 10h týždenne|Notion, Canva, CapCut workflow.','Ako rozprávať príbehy ktoré zaujmú|Storytelling šablóna.']};
+          const json=JSON.parse(fs.readFileSync('./ideas-list.json','utf-8'));
+          const n=Object.keys(niches)[Math.floor(Math.random()*3)];
+          const picks=niches[n];
+          picks.forEach(p=>{
+            const [title,hook]=p.split('|');
+            const f=today+'-'+title.toLowerCase().replace(/[^a-z0-9áäčďéíľňóôšťúýž]/g,'').replace(/\\s+/g,'-').slice(0,50)+'.md';
+            json.push({title,niche:n,hook,format:'Reel',platform:'IG/TikTok',date:today,path:'ideas/'+n+'/'+f,tags:[n.toLowerCase()]});
+          });
+          // Keep only last 100 ideas
+          if(json.length>100) json=json.slice(-100);
+          fs.writeFileSync('./ideas-list.json',JSON.stringify(json,null,2));
+          "
 
       - name: Commit and push
         run: |
           git config user.name "Launchpad Bot"
           git config user.email "bot@launchpadmarketing.com"
-          git add -A
-          git diff --staged --quiet || git commit -m "📱 Daily ideas $(date +%Y-%m-%d)"
+          git add ideas-list.json
+          git diff --staged --quiet || git commit -m "🤖 Daily ideas $(date +%Y-%m-%d_%H:%M)"
           git push
